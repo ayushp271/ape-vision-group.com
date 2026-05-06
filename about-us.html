@@ -4,28 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | APE VISION GROUP</title>
+    <!-- STREAMING_CHUNK:Configuring premium assets and styles... -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --brand-navy: #0a0f1d; --brand-blue: #2563eb; --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1); }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: var(--brand-navy); -webkit-font-smoothing: antialiased; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s var(--ease-out-expo); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(25px); border-bottom: 1px solid rgba(0, 0, 0, 0.04); }
-        .nav-link { font-size: 8.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; color: #64748b; }
-        .nav-active { color: var(--brand-blue); }
-        .vision-card { background: #0a0f1d; color: white; padding: 4rem; border-radius: 3rem; }
+        :root {
+            --brand-navy: #0a0f1d;
+            --brand-blue: #2563eb;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* STREAMING_CHUNK:Defining cinematic reveal tokens... --> */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-link {
+            font-size: 8.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #64748b;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-active { color: var(--brand-blue); }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--brand-blue);
+            transition: width 0.4s var(--ease-out-expo);
+        }
+
+        .nav-link:hover::after, .nav-active::after { width: 100%; }
+
+        /* STREAMING_CHUNK:Styling specialized UI containers... --> */
+        .technical-card {
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            padding: 3rem;
+            border-radius: 2.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+            height: 100%;
+        }
+
+        .technical-card:hover {
+            background: #ffffff;
+            border-color: var(--brand-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 40px 80px -20px rgba(37, 99, 235, 0.1);
+        }
+
+        .vision-strip {
+            background: var(--brand-navy);
+            color: white;
+            padding: 5rem 0;
+            border-radius: 3rem;
+        }
+
+        .stat-line {
+            height: 1px;
+            background: linear-gradient(to right, var(--brand-blue), transparent);
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 1001; width: 0%;
+        }
     </style>
 </head>
 <body>
+
+    <div id="progress-bar"></div>
+
+    <!-- STREAMING_CHUNK:Rendering Navigation... -->
     <header class="glass-nav fixed top-0 w-full z-[1000] px-8 py-5">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <a href="index.html" class="flex flex-col">
-                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
-                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.4em] mt-1">Visionary Realities</span>
+            <a href="index.html" class="flex flex-col group cursor-pointer">
+                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
+                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
             </a>
-            <nav class="hidden xl:flex items-center space-x-8">
+
+            <nav class="hidden xl:flex items-center space-x-10">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about-us.html" class="nav-link nav-active">About Us</a>
                 <a href="services.html" class="nav-link">Our Services</a>
@@ -34,41 +130,191 @@
                 <a href="associates-clientele.html" class="nav-link">Associates & Clientele</a>
                 <a href="contact.html" class="nav-link">Contact Us</a>
             </nav>
+
+            <button class="xl:hidden text-slate-900 text-xl">
+                <i class="fas fa-bars-staggered"></i>
+            </button>
         </div>
     </header>
 
-    <main class="pt-40 pb-20">
-        <div class="container mx-auto px-8">
-            <div class="grid lg:grid-cols-2 gap-16 mb-24 items-center">
-                <div class="reveal active">
-                    <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-4 block">Our Identity</span>
-                    <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8">Integrated <br/>Expertise.</h1>
-                    <p class="text-lg text-slate-500 font-light leading-relaxed">Ape Vision Group is a forward-looking organization delivering integrated solutions across the energy and infrastructure sectors.</p>
-                </div>
-                <div class="reveal active stagger-1">
-                    <img src="https://lh3.googleusercontent.com/d/1z2lT8vYOsf86b_dx1lr3dUZp4UsKnP1n" class="rounded-[3rem] shadow-2xl" alt="APE Vision Project Site">
-                </div>
-            </div>
-
-            <div class="vision-card reveal">
-                <h2 class="text-3xl md:text-5xl font-black uppercase mb-12">Our Vision</h2>
-                <p class="text-2xl font-light text-slate-300 italic mb-16">To be a trusted global contributor in energy and infrastructure development by delivering innovative, sustainable, and high-impact solutions.</p>
-                <div class="grid md:grid-cols-2 gap-12 border-t border-white/10 pt-12">
-                    <div>
-                        <h4 class="text-blue-400 text-[10px] font-black uppercase tracking-widest mb-4">The Mission</h4>
-                        <ul class="space-y-4 text-sm font-light text-slate-400">
-                            <li>• Deliver reliable energy solutions.</li>
-                            <li>• Maintain safety and excellence.</li>
-                            <li>• Build long-term trust.</li>
-                        </ul>
+    <main>
+        <!-- STREAMING_CHUNK:Hero Narrative Section... -->
+        <section class="pt-40 pb-20 bg-white overflow-hidden">
+            <div class="container mx-auto px-8">
+                <div class="grid lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-7 reveal">
+                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Identity</span>
+                        <h1 class="text-6xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.85] mb-12">Bold Ideas. <br/>Expertly Built.</h1>
+                        <div class="max-w-2xl text-2xl text-slate-500 font-light leading-relaxed">
+                            <p class="mb-8">Ape Vision Group is a forward-looking organization delivering <span class="text-slate-950 font-semibold italic">integrated solutions</span> across the energy and infrastructure sectors.</p>
+                            <p>Built on the principles of innovation, reliability, and sustainability, we enable modern infrastructure development through a solution-driven approach.</p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 reveal stagger-1">
+                        <div class="rounded-[3rem] overflow-hidden shadow-2xl aspect-square relative group">
+                            <img src="https://lh3.googleusercontent.com/d/1z2lT8vYOsf86b_dx1lr3dUZp4UsKnP1n" class="w-full h-full object-cover grayscale transition duration-1000 group-hover:grayscale-0 group-hover:scale-110" alt="Infrastructure Site">
+                            <div class="absolute inset-0 bg-blue-600/10 mix-blend-overlay"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- STREAMING_CHUNK:Strategic Core Section... -->
+        <section class="py-24 bg-slate-50">
+            <div class="container mx-auto px-8">
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Vision Card -->
+                    <div class="vision-strip p-12 lg:p-16 reveal">
+                        <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.5em] mb-8 block">Our Vision</span>
+                        <h2 class="text-3xl md:text-5xl font-light italic leading-tight mb-12">
+                            To be a <span class="text-white font-black not-italic uppercase">trusted global contributor</span> in energy and infrastructure by delivering innovative, sustainable, and high-impact solutions.
+                        </h2>
+                        <div class="stat-line"></div>
+                        <p class="text-slate-400 text-sm font-light uppercase tracking-widest">Shaping Future Generations</p>
+                    </div>
+
+                    <!-- Mission List -->
+                    <div class="technical-card reveal stagger-1">
+                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-8 block">Our Mission</span>
+                        <div class="space-y-10">
+                            <div class="flex items-start gap-6">
+                                <span class="text-blue-600 font-black text-xl">01</span>
+                                <div>
+                                    <h4 class="text-sm font-black uppercase mb-2">Technical Advancement</h4>
+                                    <p class="text-slate-500 text-sm font-light">Deliver reliable and technically advanced infrastructure solutions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <span class="text-blue-600 font-black text-xl">02</span>
+                                <div>
+                                    <h4 class="text-sm font-black uppercase mb-2">Operational Excellence</h4>
+                                    <p class="text-slate-500 text-sm font-light">Maintain highest standards of quality, safety, and performance.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6">
+                                <span class="text-blue-600 font-black text-xl">03</span>
+                                <div>
+                                    <h4 class="text-sm font-black uppercase mb-2">Trust & Performance</h4>
+                                    <p class="text-slate-500 text-sm font-light">Build long-term partnerships through consistent value creation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expertise Grid (Dense) -->
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="technical-card reveal stagger-1">
+                        <h3 class="text-lg font-black uppercase mb-4">Energy Development</h3>
+                        <p class="text-slate-500 text-sm font-light">Strategic infrastructure development for global power transitions.</p>
+                    </div>
+                    <div class="technical-card reveal stagger-2">
+                        <h3 class="text-lg font-black uppercase mb-4">Renewable Integration</h3>
+                        <p class="text-slate-500 text-sm font-light">Clean energy solutions built for reliability and scale.</p>
+                    </div>
+                    <div class="technical-card reveal stagger-3">
+                        <h3 class="text-lg font-black uppercase mb-4">Turnkey Execution</h3>
+                        <p class="text-slate-500 text-sm font-light">Single-point responsibility from engineering to handover.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STREAMING_CHUNK:Our Approach Section... -->
+        <section class="py-32 bg-white">
+            <div class="container mx-auto px-8">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="reveal">
+                        <h2 class="text-5xl font-black uppercase tracking-tighter mb-8">Integrated <br/>Approach.</h2>
+                        <p class="text-xl text-slate-500 font-light leading-relaxed">
+                            Ape Vision Group combines technical expertise, strategic planning, and execution excellence to deliver end-to-end solutions. Our methodology ensures optimised performance, cost efficiency, and long-term operational reliability for every project.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 reveal stagger-1">
+                        <div class="bg-blue-600 text-white p-10 rounded-[2.5rem]">
+                            <h4 class="text-[9px] font-black uppercase tracking-widest mb-4 opacity-70 text-center">Execution</h4>
+                            <div class="text-center font-black text-2xl uppercase italic">Discipline</div>
+                        </div>
+                        <div class="bg-slate-900 text-white p-10 rounded-[2.5rem]">
+                            <h4 class="text-[9px] font-black uppercase tracking-widest mb-4 opacity-70 text-center">Planning</h4>
+                            <div class="text-center font-black text-2xl uppercase italic">Certainty</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-white border-t border-slate-100 py-10 text-center text-[9px] font-black uppercase tracking-[0.4em] text-slate-400">
-        &copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.
+    <!-- STREAMING_CHUNK:Rendering Footer... -->
+    <footer class="bg-white border-t border-slate-100 pt-32 pb-16">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-24 mb-32">
+                <div class="max-w-md reveal">
+                    <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
+                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-6">Visionary Realities</p>
+                    
+                    <div class="mt-16">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
+                        <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100">
+                            <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
+                                Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
+                                8 Square Zen, Sector-142, Noida,<br>
+                                Uttar Pradesh, India.
+                            </p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" 
+                               target="_blank" class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
+                                View on Maps <i class="fas fa-location-dot"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400 reveal stagger-1">
+                    <div class="flex flex-col space-y-5">
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Explore</span>
+                        <a href="index.html">Home</a>
+                        <a href="about-us.html" class="text-blue-600">About Us</a>
+                        <a href="services.html">Services</a>
+                    </div>
+                    <div class="flex flex-col space-y-5">
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Company</span>
+                        <a href="brain-behind-avg.html">Leadership</a>
+                        <a href="associates-clientele.html">Associates</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                    <div class="flex flex-col space-y-5">
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Social</span>
+                        <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
+                        <a href="#" class="hover:text-blue-600 transition">Email</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-100 pt-12 text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] text-center">
+                &copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.
+            </div>
+        </div>
     </footer>
+
+    <script>
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        });
+
+        window.onload = initReveal;
+    </script>
 </body>
 </html>
