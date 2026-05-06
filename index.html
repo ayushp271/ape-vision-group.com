@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- STREAMING_CHUNK:Configuring head and premium assets... -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APE VISION GROUP | Shaping Bold Ideas into Visionary Realities</title>
-    <!-- STREAMING_CHUNK:Configuring essential libraries and fonts... -->
+    <title>APE VISION GROUP | Visionary Realities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* STREAMING_CHUNK:Defining fluid animation tokens... */
+        /* STREAMING_CHUNK:Defining cinematic motion tokens... */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -47,7 +47,7 @@
             font-size: clamp(3.5rem, 15vw, 13rem);
         }
 
-        /* STREAMING_CHUNK:Styling navigation and UI elements... */
+        /* STREAMING_CHUNK:Styling Navigation UI... */
         .glass-nav {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(25px);
@@ -81,9 +81,10 @@
 
         .nav-link:hover::after { width: 100%; }
 
+        /* STREAMING_CHUNK:Industry Card Interactivity... */
         .industry-card {
             height: 70vh;
-            min-height: 500px;
+            min-height: 550px;
             position: relative;
             overflow: hidden;
             border-radius: 2.5rem;
@@ -103,20 +104,6 @@
             background: linear-gradient(to top, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.2) 60%, transparent 100%);
         }
 
-        .service-card {
-            background: #f8fafc;
-            border: 1px solid #f1f5f9;
-            transition: all 0.5s var(--ease-out-expo);
-            border-radius: 2.5rem;
-        }
-
-        .service-card:hover {
-            background: #ffffff;
-            border-color: var(--brand-blue);
-            transform: translateY(-10px);
-            box-shadow: 0 40px 80px -20px rgba(37, 99, 235, 0.15);
-        }
-
         .btn-fluid {
             border-radius: 100px;
             transition: all 0.6s var(--ease-out-expo);
@@ -131,25 +118,22 @@
         }
 
         #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--brand-blue);
-            z-index: 1001;
-            width: 0%;
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 1001; width: 0%;
         }
 
-        .address-box {
+        .content-card {
             background: #f8fafc;
             border: 1px solid #f1f5f9;
-            transition: all 0.4s var(--ease-out-expo);
+            padding: 3rem;
+            border-radius: 2.5rem;
+            transition: all 0.5s var(--ease-out-expo);
         }
 
-        .address-box:hover {
-            border-color: var(--brand-blue);
+        .content-card:hover {
             background: #ffffff;
-            transform: translateY(-5px);
+            border-color: var(--brand-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 40px 80px -20px rgba(37, 99, 235, 0.1);
         }
     </style>
 </head>
@@ -157,22 +141,22 @@
 
     <div id="progress-bar"></div>
 
-    <!-- STREAMING_CHUNK:Rendering fixed Navigation... -->
+    <!-- STREAMING_CHUNK:Rendering Navigation... -->
     <header class="glass-nav fixed top-0 w-full z-[1000] px-8 py-5" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <div class="flex flex-col group cursor-pointer">
+            <div class="flex flex-col group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
-                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
+                <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
             </div>
 
             <nav class="hidden xl:flex items-center space-x-10">
-                <a href="#index.html" class="nav-link text-blue-600">Home</a>
-                <a href="#about-us.html" class="nav-link">About Us</a>
-                <a href="#services.html" class="nav-link">Our Services</a>
-                <a href="#industries.html" class="nav-link">Industries</a>
-                <a href="#brain-behind-avg.html" class="nav-link">Brain Behind AVG</a>
-                <a href="#associates-clientele.html" class="nav-link">Associates & Clientele</a>
-                <a href="#contact.html" class="nav-link">Contact Us</a>
+                <a href="index.html" class="nav-link text-blue-600">Home</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Our Services</a>
+                <a href="industries.html" class="nav-link">Industries</a>
+                <a href="brain-behind-avg.html" class="nav-link">Brain Behind AVG</a>
+                <a href="associates-clientele.html" class="nav-link">Associates & Clientele</a>
+                <a href="contact.html" class="nav-link">Contact Us</a>
             </nav>
 
             <button class="xl:hidden text-slate-900 text-xl">
@@ -190,12 +174,12 @@
                         Integrated Infrastructure Solutions
                     </span>
                     <h1 class="hero-title font-black text-slate-950 uppercase mb-16">
-                        SHAPING <br/><span class="text-blue-600 italic font-light">REALITIES.</span>
+                        SHAPING <br/><span class="text-blue-600 italic font-light">VISIONARY</span><br/>REALITIES.
                     </h1>
                     <div class="flex flex-col sm:flex-row justify-center gap-8">
-                        <button class="btn-fluid bg-blue-600 text-white px-14 py-7 text-[10px] font-black uppercase tracking-widest">
+                        <a href="services.html" class="btn-fluid bg-blue-600 text-white px-14 py-7 text-[10px] font-black uppercase tracking-widest">
                             Explore Capability <i class="fas fa-arrow-right ml-4"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -206,271 +190,159 @@
             </div>
         </section>
 
-        <!-- STREAMING_CHUNK:Rendering About Section... -->
-        <section class="py-40 bg-slate-50 overflow-hidden" id="about">
+        <!-- STREAMING_CHUNK:Rendering Narrative About Segment... -->
+        <section id="about" class="py-40 bg-slate-50 overflow-hidden">
             <div class="container mx-auto px-8">
                 <div class="grid lg:grid-cols-2 gap-32 items-start">
                     <div class="reveal stagger-1">
-                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">The Group</span>
+                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Introduction</span>
                         <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-12 leading-none">
                             Bold Ideas, <br/>Expertly Built.
                         </h2>
                         <div class="space-y-8 text-xl text-slate-500 font-light leading-relaxed">
                             <p>Ape Vision Group is a forward-looking organization delivering integrated solutions across the energy and infrastructure sectors.</p>
-                            <p>Built on the principles of innovation, reliability, and sustainability, the group is committed to enabling modern infrastructure development and supporting the global transition toward cleaner and more efficient energy systems.</p>
+                            <p>Built on the principles of innovation, reliability, and sustainability, the group is committed to enabling modern infrastructure development and supporting the global transition toward cleaner systems.</p>
                         </div>
                     </div>
                     <div class="reveal stagger-2">
-                        <div class="grid md:grid-cols-2 gap-12">
-                            <div class="border-l-4 border-blue-500 pl-8 py-4">
-                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Our Vision</h4>
-                                <p class="text-slate-600 font-light italic leading-relaxed">To be a trusted global contributor in energy and infrastructure development by delivering innovative, sustainable, and high-impact solutions.</p>
-                            </div>
-                            <div class="border-l-4 border-slate-200 pl-8 py-4">
-                                <h4 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4">Core Expertise</h4>
-                                <ul class="text-[10px] font-black uppercase tracking-wider space-y-3 text-slate-900">
-                                    <li>• Renewable Energy Integration</li>
-                                    <li>• Thermal Power (BOP)</li>
-                                    <li>• Project Management</li>
-                                    <li>• Turnkey Project Execution</li>
-                                </ul>
-                            </div>
+                        <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative group">
+                            <img src="https://lh3.googleusercontent.com/d/1z2lT8vYOsf86b_dx1lr3dUZp4UsKnP1n" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="About Image">
+                            <div class="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- STREAMING_CHUNK:Rendering all 9 Services... -->
-        <section class="py-40 bg-white" id="services">
+        <!-- STREAMING_CHUNK:Rendering Sector Grid... -->
+        <section id="industries" class="py-40 bg-white">
             <div class="container mx-auto px-8">
                 <div class="max-w-4xl mb-24 reveal">
-                    <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Capabilities</span>
-                    <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-10">Our <br/>Services.</h2>
-                    <p class="text-xl text-slate-500 font-light max-w-2xl">From early-stage planning to commissioning, we provide single-window support for mission-critical infrastructure.</p>
+                    <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Impact</span>
+                    <h2 class="text-5xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.85] mb-10">Technical <br/>Domains.</h2>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service 01 -->
-                    <div class="service-card p-12 reveal stagger-1">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-file-contract"></i>
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <a href="thermal-power.html" class="reveal stagger-1 industry-card group">
+                        <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal">
+                        <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
+                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 01</span>
+                            <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Thermal Power <br/>Plants (BOP)</h3>
                         </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Feasibility Study</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Early-stage technical and commercial viability assessment for smarter decision making.</p>
-                    </div>
-                    <!-- Service 02 -->
-                    <div class="service-card p-12 reveal stagger-2">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-chart-line"></i>
+                    </a>
+                    <a href="renewable-energy.html" class="reveal stagger-2 industry-card group">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable">
+                        <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
+                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 02</span>
+                            <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br>& BESS</h3>
                         </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Detailed Project Report</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Structured documentation for sanctioning, investor evaluation, and regulatory approvals.</p>
-                    </div>
-                    <!-- Service 03 -->
-                    <div class="service-card p-12 reveal stagger-3">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-calculator"></i>
+                    </a>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <a href="green-hydrogen.html" class="reveal stagger-1 industry-card group h-[50vh]">
+                        <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Hydrogen">
+                        <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 03</span>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
                         </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Financial Modelling</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Bankable project models for funding, ROI analysis, and risk visibility.</p>
-                    </div>
-                    <!-- Service 04 -->
-                    <div class="service-card p-12 reveal stagger-1">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-gavel"></i>
+                    </a>
+                    <a href="data-centres.html" class="reveal stagger-2 industry-card group h-[50vh]">
+                        <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
+                        <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 04</span>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
                         </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Tender Support</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Technical and commercial bid preparation ensuring compliance and competitive edges.</p>
-                    </div>
-                    <!-- Service 05 -->
-                    <div class="service-card p-12 reveal stagger-2">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-drafting-compass"></i>
+                    </a>
+                    <a href="smr.html" class="reveal stagger-3 industry-card group h-[50vh]">
+                        <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
+                        <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 05</span>
+                            <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br>Reactors</h3>
                         </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Engineering Services</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Basic and detailed engineering deliverables built for construction practicality.</p>
-                    </div>
-                    <!-- Service 06 -->
-                    <div class="service-card p-12 reveal stagger-3">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-users-cog"></i>
-                        </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Project Management</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Structured governance for time, cost, quality, and HSE monitoring.</p>
-                    </div>
-                    <!-- Service 07 -->
-                    <div class="service-card p-12 reveal stagger-1">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Project Development</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Acting as developer for end-to-end project structuring and integration.</p>
-                    </div>
-                    <!-- Service 08 -->
-                    <div class="service-card p-12 reveal stagger-2">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-hard-hat"></i>
-                        </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Construction Management</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">On-site supervision, QA/QC monitoring, and disciplined progress control.</p>
-                    </div>
-                    <!-- Service 09 -->
-                    <div class="service-card p-12 reveal stagger-3">
-                        <div class="w-12 h-12 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white">
-                            <i class="fas fa-key"></i>
-                        </div>
-                        <h4 class="text-xl font-black uppercase tracking-tight mb-4">Turnkey Execution</h4>
-                        <p class="text-slate-500 text-sm font-light leading-relaxed">Single-point responsibility from engineering design to commissioning.</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- STREAMING_CHUNK:Rendering all 7 Industries... -->
-        <section class="py-40 bg-slate-900 text-white" id="industries">
+        <!-- STREAMING_CHUNK:Rendering Leadership Segment... -->
+        <section id="leadership" class="py-40 bg-slate-900 text-white">
             <div class="container mx-auto px-8">
-                <div class="max-w-4xl mb-24 reveal">
-                    <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Impact Sectors</span>
-                    <h2 class="text-5xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.85] mb-10">Industries <br/>We Serve.</h2>
-                </div>
-
-                <div class="space-y-12">
-                    <div class="grid lg:grid-cols-2 gap-12">
-                        <div class="reveal stagger-1 industry-card group">
-                            <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 01</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Thermal Power <br/>Plants (BOP)</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-2 industry-card group">
-                            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 02</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br>& BESS</h3>
-                            </div>
+                <div class="grid lg:grid-cols-12 gap-20 items-center">
+                    <div class="lg:col-span-5 reveal">
+                        <div class="aspect-[4/5] rounded-[3rem] overflow-hidden border-[12px] border-white/5 shadow-2xl">
+                            <img src="https://lh3.googleusercontent.com/d/1w9Oyjz5Agfno7wN1_HAn9lMZgwDygnXr" class="w-full h-full object-cover" alt="Mr. Sujit Shankar">
                         </div>
                     </div>
-
-                    <div class="grid lg:grid-cols-3 gap-12">
-                        <div class="reveal stagger-1 industry-card group h-[50vh]">
-                            <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Hydrogen">
-                            <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 03</span>
-                                <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-2 industry-card group h-[50vh]">
-                            <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
-                            <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 04</span>
-                                <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-3 industry-card group h-[50vh]">
-                            <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
-                            <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 05</span>
-                                <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br>Reactors</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="grid lg:grid-cols-2 gap-12">
-                        <div class="reveal stagger-1 industry-card group h-[60vh]">
-                            <img src="https://lh3.googleusercontent.com/d/1oEcz-saC0Qq_tS6vkWj3eGinYetrNq_0" class="absolute inset-0 w-full h-full object-cover" alt="AI Chip">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 06</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">AI Chip <br/>Manufacturing</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-2 industry-card group h-[60vh]">
-                            <img src="https://lh3.googleusercontent.com/d/1ac6Z6NtXwUPGoclC-ywtCY9FGDHGVD55" class="absolute inset-0 w-full h-full object-cover" alt="CCUS">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 07</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Carbon Capture <br/>(CCUS)</h3>
-                            </div>
-                        </div>
+                    <div class="lg:col-span-7 reveal stagger-1">
+                        <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">MD & CEO</span>
+                        <h2 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-10">Mr. Sujit Shankar.</h2>
+                        <p class="text-slate-400 text-xl font-light mb-12 max-w-xl">
+                            The strategic direction and growth of Ape Vision Group are driven by 35+ years of infrastructure expertise and leadership.
+                        </p>
+                        <a href="brain-behind-avg.html" class="btn-fluid bg-blue-600 text-white px-14 py-6 text-[10px] font-black uppercase tracking-widest">
+                            Read Biography <i class="fas fa-arrow-right ml-4"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- STREAMING_CHUNK:Rendering Call to Action... -->
-        <section class="py-40 bg-white text-center">
-            <div class="container mx-auto px-8">
-                <div class="reveal">
-                    <h2 class="text-7xl md:text-[10rem] font-black uppercase tracking-tighter mb-16 leading-[0.85]">READY TO <br/><span class="text-blue-600">EVOLVE?</span></h2>
-                    <p class="text-xl md:text-2xl text-slate-400 max-w-2xl mx-auto mb-20 font-light">
-                        Partner with us to transform complex infrastructure ideas into visionary realities.
-                    </p>
-                    <button class="btn-fluid bg-blue-600 text-white px-20 py-8 text-[11px] font-black uppercase tracking-[0.3em]">
-                        Start Conversation
-                    </button>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- STREAMING_CHUNK:Rendering footer with Noida address... -->
+    <!-- STREAMING_CHUNK:Rendering Footer... -->
     <footer class="bg-white border-t border-slate-100 pt-32 pb-16">
         <div class="container mx-auto px-8">
             <div class="flex flex-col lg:flex-row justify-between gap-24 mb-32">
-                <div class="max-w-md">
+                <div class="max-w-md reveal">
                     <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
                     <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-6">Visionary Realities</p>
                     
-                    <!-- Global Headquarters Section -->
-                    <div class="mt-16 reveal">
+                    <div class="mt-16">
                         <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
-                        <div class="address-box p-8 rounded-3xl group">
+                        <div class="content-card !p-8 group cursor-default">
                             <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
                                 Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
                                 8 Square Zen, Sector-142, Noida,<br>
                                 Uttar Pradesh, India.
                             </p>
                             <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" 
-                               target="_blank" 
-                               class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3 group-hover:gap-5 transition-all">
+                               target="_blank" class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
                                 View on Google Maps <i class="fas fa-location-dot"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400 reveal stagger-1">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-20 text-[9px] font-black uppercase tracking-widest text-slate-400">
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
-                        <a href="#about-us" class="hover:text-blue-600 transition">About Us</a>
-                        <a href="#services" class="hover:text-blue-600 transition">Our Services</a>
-                        <a href="#industries" class="hover:text-blue-600 transition">Industries</a>
+                        <a href="about-us.html" class="hover:text-blue-600 transition">About Us</a>
+                        <a href="services.html" class="hover:text-blue-600 transition">Our Services</a>
+                        <a href="industries.html" class="hover:text-blue-600 transition">Industries</a>
                     </div>
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Company</span>
-                        <a href="#brain-behind-avg" class="hover:text-blue-600 transition">Brain Behind AVG</a>
-                        <a href="#partners" class="hover:text-blue-600 transition">Associates</a>
-                        <a href="#partners" class="hover:text-blue-600 transition">Clientele</a>
+                        <a href="brain-behind-avg.html" class="hover:text-blue-600 transition">Leadership</a>
+                        <a href="associates-clientele.html" class="hover:text-blue-600 transition">Associates</a>
+                        <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
                     </div>
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Legal</span>
-                        <a href="#" class="hover:text-blue-600 transition">Privacy Policy</a>
-                        <a href="#" class="hover:text-blue-600 transition">Terms of Use</a>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Connect</span>
+                        <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
+                        <a href="#" class="hover:text-blue-600 transition">Email Group</a>
                     </div>
                 </div>
             </div>
             
             <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] gap-8">
                 <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
-                <div class="flex items-center gap-10">
-                    <i class="fab fa-linkedin text-xl cursor-pointer hover:text-blue-600 transition"></i>
-                    <i class="fas fa-envelope text-xl cursor-pointer hover:text-blue-600 transition"></i>
-                </div>
+                <span class="text-slate-300">ISO 9001:2015 CERTIFIED</span>
             </div>
         </div>
     </footer>
 
-    <!-- STREAMING_CHUNK:Initializing fluid interactions... -->
+    <!-- STREAMING_CHUNK:Initializing global scripts... -->
     <script>
         function initReveal() {
             const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
@@ -503,4 +375,3 @@
     </script>
 </body>
 </html>
-
