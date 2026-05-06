@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Behind AVG | APE VISION GROUP Leadership</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --brand-navy: #0a0f1d;
+            --brand-blue: #2563eb;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.4s var(--ease-out-expo), transform 1.4s var(--ease-out-expo);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-link {
+            font-size: 8.5px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #64748b;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--brand-blue); }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--brand-blue);
+            transition: width 0.4s var(--ease-out-expo);
+        }
+
+        .nav-link:hover::after { width: 100%; }
+
+        .credential-item {
+            border-left: 4px solid #e2e8f0;
+            padding-left: 1.5rem;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        .credential-item:hover {
+            border-left-color: var(--brand-blue);
+            transform: translateX(10px);
+        }
+        
+        .association-tag {
+            padding: 12px 24px;
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #1e293b;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .profile-container {
+            border-radius: 3rem;
+            overflow: hidden;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.15);
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--brand-blue);
+            z-index: 1001;
+            width: 0%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-8 py-5">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex flex-col group cursor-pointer">
+                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
+                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
+            </a>
+
+            <nav class="hidden xl:flex items-center space-x-10">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About Us</a>
+                <a href="#" class="nav-link">Our Services</a>
+                <a href="#" class="nav-link">Industries</a>
+                <a href="brain-behind-avg.html" class="nav-link text-blue-600">Brain Behind AVG</a>
+                <a href="#" class="nav-link">Associates & Clientele</a>
+                <a href="#" class="nav-link">Contact Us</a>
+            </nav>
+
+            <button class="xl:hidden text-slate-900 text-xl">
+                <i class="fas fa-bars-staggered"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="pt-40 pb-20 bg-white overflow-hidden">
+            <div class="container mx-auto px-8">
+                <div class="reveal">
+                    <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Leadership Profile</span>
+                    <h1 class="text-6xl md:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] mb-24">The Brain <br/>Behind AVG.</h1>
+                </div>
+
+                <div class="grid lg:grid-cols-12 gap-20 items-start">
+                    <!-- Profile Image & Bio Sidebar -->
+                    <div class="lg:col-span-5 reveal stagger-1">
+                        <div class="profile-container bg-slate-100 aspect-[4/5]">
+                            <img src="https://lh3.googleusercontent.com/d/1w9Oyjz5Agfno7wN1_HAn9lMZgwDygnXr" 
+                                 class="w-full h-full object-cover" alt="Mr. Sujit Shankar">
+                        </div>
+                        <div class="mt-12">
+                            <h2 class="text-3xl font-black uppercase tracking-tight text-slate-950">Mr. Sujit Shankar</h2>
+                            <p class="text-blue-600 font-black text-[11px] uppercase tracking-[0.3em] mt-3">Managing Director & CEO</p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 reveal stagger-2">
+                        <div class="space-y-10 text-xl text-slate-500 font-light leading-relaxed mb-20">
+                            <p class="text-slate-950 font-semibold">The strategic direction and growth of Ape Vision Group are driven by its core leadership team, with key leadership under Mr. Sujit Shankar.</p>
+                            
+                            <p>Mr. Shankar is associated with <strong>Ace Premier Enterprises</strong>, <strong>Ape Vision LLP</strong>, and <strong>Ape Vision Techinfra Pvt. Ltd.</strong>, and plays a vital role in guiding the group's long-term vision in the energy and infrastructure domain.</p>
+                            
+                            <p>With a strong focus on innovation, project development, and sustainable business growth, he leads Ape Vision Group's commitment to delivering high-impact solutions that support modern infrastructure development and the transition toward cleaner energy systems.</p>
+                        </div>
+
+                        <!-- Professional Credentials Grid (Data from Image) -->
+                        <div class="space-y-6">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-8">Professional Strategic Foundation</span>
+                            
+                            <div class="grid md:grid-cols-2 gap-8">
+                                <div class="credential-item" style="border-left-color: #1e3a8a;">
+                                    <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Education</span>
+                                    <p class="text-lg font-bold text-slate-900">B.Tech (Engineering)</p>
+                                </div>
+                                <div class="credential-item" style="border-left-color: #ea580c;">
+                                    <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Management</span>
+                                    <p class="text-lg font-bold text-slate-900">IIM Calcutta</p>
+                                </div>
+                                <div class="credential-item" style="border-left-color: #166534;">
+                                    <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Specialization</span>
+                                    <p class="text-lg font-bold text-slate-900">Project Management — IIT Delhi</p>
+                                </div>
+                                <div class="credential-item" style="border-left-color: #86198f;">
+                                    <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Experience</span>
+                                    <p class="text-lg font-bold text-slate-900">35+ Years</p>
+                                </div>
+                            </div>
+
+                            <div class="credential-item mt-12" style="border-left-color: #c2410c;">
+                                <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Past Strategic Roles</span>
+                                <p class="text-lg font-bold text-slate-900 leading-relaxed">
+                                    DCPL · Reliance Infrastructure (CEO) · Punj Lloyd & more
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-24">
+                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-8">Group Entities</span>
+                            <div class="flex flex-wrap gap-4">
+                                <div class="association-tag">Ace Premier Enterprises</div>
+                                <div class="association-tag">Ape Vision LLP</div>
+                                <div class="association-tag">Ape Vision Techinfra Pvt. Ltd.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-slate-50 text-center">
+            <div class="container mx-auto px-8">
+                <div class="reveal">
+                    <h3 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-12">Connect for <br/>Strategic Partnerships</h3>
+                    <a href="mailto:info@apevisiongroup.com" class="inline-flex items-center gap-4 bg-blue-600 text-white px-12 py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
+                        Inquiry for CEO's Office <i class="fas fa-paper-plane"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 pt-32 pb-16">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-24 mb-32">
+                <div class="max-w-md reveal">
+                    <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
+                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-6">Visionary Realities</p>
+                    
+                    <div class="mt-16">
+                        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
+                        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                            <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
+                                Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
+                                8 Square Zen, Sector-142, Noida,<br>
+                                Uttar Pradesh, India.
+                            </p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" 
+                               target="_blank" class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
+                                View on Google Maps <i class="fas fa-location-dot"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                    <div class="flex flex-col space-y-5">
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
+                        <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+                        <a href="#" class="hover:text-blue-600 transition">About Us</a>
+                        <a href="#" class="hover:text-blue-600 transition">Our Services</a>
+                    </div>
+                    <div class="flex flex-col space-y-5">
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Company</span>
+                        <a href="brain-behind-avg.html" class="text-blue-600">Brain Behind AVG</a>
+                        <a href="#" class="hover:text-blue-600 transition">Associates</a>
+                        <a href="#" class="hover:text-blue-600 transition">Contact</a>
+                    </div>
+                    <div class="flex flex-col space-y-5">
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Social</span>
+                        <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
+                        <a href="#" class="hover:text-blue-600 transition">Email</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] gap-8">
+                <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        });
+
+        window.onload = initReveal;
+    </script>
+</body>
+</html>
