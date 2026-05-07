@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industries We Serve | APE VISION GROUP</title>
-    <!-- STREAMING_CHUNK:Configuring head assets and styling... -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
@@ -24,7 +23,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* STREAMING_CHUNK:Defining animation tokens... */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -46,6 +44,7 @@
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s var(--ease-out-expo);
         }
 
         .nav-link {
@@ -73,14 +72,20 @@
 
         .nav-link:hover::after { width: 100%; }
 
-        /* STREAMING_CHUNK:Styling industry card architecture... */
         .industry-card {
             position: relative;
             overflow: hidden;
-            border-radius: 2.5rem;
+            border-radius: 2rem;
             transition: all 0.8s var(--ease-out-expo);
             cursor: pointer;
-            min-height: 450px;
+            min-height: 350px;
+        }
+
+        @media (min-width: 1024px) {
+            .industry-card {
+                border-radius: 2.5rem;
+                min-height: 450px;
+            }
         }
 
         .industry-card img {
@@ -101,13 +106,15 @@
         }
 
         #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--brand-blue);
-            z-index: 1001;
-            width: 0%;
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        #mobile-menu {
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -115,8 +122,8 @@
 
     <div id="progress-bar"></div>
 
-    <!-- STREAMING_CHUNK:Rendering Navigation... -->
-    <header class="glass-nav fixed top-0 w-full z-[1000] px-8 py-5">
+    <!-- Navigation -->
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
             <a href="index.html" class="flex flex-col group cursor-pointer">
                 <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
@@ -133,87 +140,109 @@
                 <a href="contact.html" class="nav-link">Contact Us</a>
             </nav>
 
-            <button class="xl:hidden text-slate-900 text-xl">
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2">
                 <i class="fas fa-bars-staggered"></i>
             </button>
         </div>
     </header>
 
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
+        <div class="flex justify-between items-center mb-12">
+            <div class="flex flex-col">
+                <span class="text-xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
+                <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.3em] mt-1">Visionary Realities</span>
+            </div>
+            <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-6">
+            <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Home</a>
+            <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
+            <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
+            <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Industries</a>
+            <a href="brain-behind-avg.html" class="text-3xl font-black uppercase tracking-tighter">Leadership</a>
+            <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
+        </nav>
+        <div class="mt-auto border-t pt-8">
+            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
+        </div>
+    </div>
+
     <main>
-        <!-- STREAMING_CHUNK:Rendering Hero Section (Page 15)... -->
-        <section class="pt-40 pb-24 bg-white overflow-hidden">
-            <div class="container mx-auto px-8">
+        <!-- Hero Section -->
+        <section class="pt-32 lg:pt-40 pb-16 lg:pb-24 bg-white overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8">
                 <div class="max-w-4xl reveal">
                     <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Reach</span>
-                    <h1 class="text-6xl md:text-[8rem] font-black uppercase tracking-tighter leading-[0.85] mb-12">Industries <br/>We Serve.</h1>
-                    <p class="text-2xl text-slate-500 font-light leading-relaxed max-w-3xl">
+                    <h1 class="text-4xl lg:text-[8rem] font-black uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] mb-8 lg:mb-12">Industries <br/>We Serve.</h1>
+                    <p class="text-xl lg:text-2xl text-slate-500 font-light leading-relaxed max-w-3xl">
                         AVG delivers engineering, project management, and execution support across high-complexity energy and infrastructure sectors. Our experience spans from conventional power to emerging clean technologies.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- STREAMING_CHUNK:Rendering 7 Industry Cards (Grid Architecture)... -->
-        <section class="py-24 bg-slate-50">
-            <div class="container mx-auto px-8">
-                <div class="space-y-8">
+        <!-- Industry Grid Architecture -->
+        <section class="py-16 lg:py-24 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="space-y-6 lg:space-y-8">
                     <!-- Row 1: High-Impact Dual Grid -->
-                    <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
                         <div class="reveal stagger-1 industry-card group">
                             <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal Power">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">Utility | Captive | Steam</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Conventional Thermal <br/>Power Plants (BOP)</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
+                                <span class="text-white/40 text-[10px] font-black mb-4 uppercase tracking-[0.2em]">Utility | Captive | Steam</span>
+                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">Conventional Thermal <br/>Power Plants (BOP)</h3>
                             </div>
                         </div>
                         <div class="reveal stagger-2 industry-card group">
                             <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable Energy">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">Solar | Hybrid | Storage</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br/>& BESS</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
+                                <span class="text-white/40 text-[10px] font-black mb-4 uppercase tracking-[0.2em]">Solar | Hybrid | Storage</span>
+                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br/>& BESS</h3>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Row 2: Editorial Triple Grid -->
-                    <div class="grid lg:grid-cols-3 gap-8">
-                        <div class="reveal stagger-1 industry-card group h-[500px]">
+                    <!-- Row 2: Triple Grid -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                        <div class="reveal stagger-1 industry-card group min-height-0 h-[400px] lg:h-[500px]">
                             <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Green Hydrogen">
-                            <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">Decarbonisation | Mobility</span>
-                                <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
+                                <span class="text-white/40 text-[9px] font-black mb-4 uppercase tracking-[0.2em]">Decarbonisation | Mobility</span>
+                                <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
                             </div>
                         </div>
-                        <div class="reveal stagger-2 industry-card group h-[500px]">
+                        <div class="reveal stagger-2 industry-card group min-height-0 h-[400px] lg:h-[500px]">
                             <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
-                            <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">Hyperscale | Colocation</span>
-                                <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
+                                <span class="text-white/40 text-[9px] font-black mb-4 uppercase tracking-[0.2em]">Hyperscale | Colocation</span>
+                                <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
                             </div>
                         </div>
-                        <div class="reveal stagger-3 industry-card group h-[500px]">
+                        <div class="reveal stagger-3 industry-card group min-height-0 h-[400px] lg:h-[500px] md:col-span-2 lg:col-span-1">
                             <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
-                            <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">Nuclear | Safety | Compliance</span>
-                                <h3 class="text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br/>Reactors (SMR)</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
+                                <span class="text-white/40 text-[9px] font-black mb-4 uppercase tracking-[0.2em]">Nuclear | Safety | Compliance</span>
+                                <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br/>Reactors (SMR)</h3>
                             </div>
                         </div>
                     </div>
 
                     <!-- Row 3: Emerging Tech Dual Grid -->
-                    <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
                         <div class="reveal stagger-1 industry-card group">
                             <img src="https://lh3.googleusercontent.com/d/1oEcz-saC0Qq_tS6vkWj3eGinYetrNq_0" class="absolute inset-0 w-full h-full object-cover" alt="AI Chip Manufacturing">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">Precision | Semiconductor</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">AI Chip <br/>Manufacturing</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
+                                <span class="text-white/40 text-[10px] font-black mb-4 uppercase tracking-[0.2em]">Precision | Semiconductor</span>
+                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">AI Chip <br/>Manufacturing</h3>
                             </div>
                         </div>
                         <div class="reveal stagger-2 industry-card group">
                             <img src="https://lh3.googleusercontent.com/d/1ac6Z6NtXwUPGoclC-ywtCY9FGDHGVD55" class="absolute inset-0 w-full h-full object-cover" alt="Carbon Capture">
-                            <div class="absolute inset-0 industry-overlay p-12 flex flex-col justify-end">
-                                <span class="text-white/40 text-xs font-black mb-4 uppercase tracking-[0.2em]">CCUS | Decarbonisation</span>
-                                <h3 class="text-4xl font-black text-white uppercase tracking-tighter">Carbon Capture <br/>(CCUS)</h3>
+                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
+                                <span class="text-white/40 text-[10px] font-black mb-4 uppercase tracking-[0.2em]">CCUS | Decarbonisation</span>
+                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">Carbon Capture <br/>(CCUS)</h3>
                             </div>
                         </div>
                     </div>
@@ -221,42 +250,41 @@
             </div>
         </section>
 
-        <!-- STREAMING_CHUNK:Rendering Call to Action... -->
-        <section class="py-32 bg-white text-center">
-            <div class="container mx-auto px-8 reveal">
-                <h3 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-12 leading-none">Ready to Evolve <br/>Your Infrastructure?</h3>
-                <a href="contact.html" class="inline-flex items-center gap-4 bg-blue-600 text-white px-14 py-7 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
+        <!-- CTA Section -->
+        <section class="py-20 lg:py-32 bg-white text-center">
+            <div class="container mx-auto px-6 lg:px-8 reveal">
+                <h3 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter mb-10 lg:mb-12 leading-tight">Ready to Evolve <br class="hidden md:block"/>Your Infrastructure?</h3>
+                <a href="contact.html" class="inline-flex items-center gap-4 bg-blue-600 text-white px-10 lg:px-14 py-5 lg:py-7 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
                     Get Industry Support <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </section>
     </main>
 
-    <!-- STREAMING_CHUNK:Rendering Footer... -->
-    <footer class="bg-white border-t border-slate-100 pt-32 pb-16">
-        <div class="container mx-auto px-8">
-            <div class="flex flex-col lg:flex-row justify-between gap-24 mb-32">
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 pt-20 lg:pt-32 pb-16">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
                 <div class="max-w-md reveal">
                     <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-6">Visionary Realities</p>
+                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-4 lg:mt-6">Visionary Realities</p>
                     
-                    <div class="mt-16">
+                    <div class="mt-12 lg:mt-16">
                         <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
-                        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                        <div class="p-6 lg:p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
                             <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
                                 Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
                                 8 Square Zen, Sector-142, Noida,<br>
                                 Uttar Pradesh, India.
                             </p>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" 
-                               target="_blank" class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" target="_blank" class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
                                 View on Google Maps <i class="fas fa-location-dot"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[9px] font-black uppercase tracking-widest text-slate-400">
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
                         <a href="index.html" class="hover:text-blue-600 transition">Home</a>
@@ -285,6 +313,27 @@
     </footer>
 
     <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
         function initReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -300,6 +349,13 @@
             const scrolled = (winScroll / height) * 100;
             const bar = document.getElementById("progress-bar");
             if(bar) bar.style.width = scrolled + "%";
+
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.style.padding = '0.8rem 1.5rem';
+            } else {
+                nav.style.padding = '1.25rem 2rem';
+            }
         });
 
         window.onload = initReveal;
