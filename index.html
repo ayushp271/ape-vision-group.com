@@ -21,6 +21,8 @@
             color: var(--brand-navy);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            /* Improved baseline legibility */
+            line-height: 1.6;
         }
 
         .reveal {
@@ -46,7 +48,7 @@
         }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
@@ -54,11 +56,12 @@
         }
 
         .nav-link {
-            font-size: 8.5px;
-            font-weight: 800;
+            /* Increased from 8.5px for legibility */
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: #64748b;
+            letter-spacing: 0.15em;
+            color: #475569;
             position: relative;
             transition: color 0.3s ease;
         }
@@ -139,6 +142,17 @@
         #mobile-menu.open {
             transform: translateX(0);
         }
+
+        /* Logo styling */
+        .brand-logo {
+            height: 54px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+        .group:hover .brand-logo {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -148,9 +162,8 @@
     <!-- Navigation -->
     <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <div class="flex flex-col group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
-                <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
+            <div class="flex items-center group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
             </div>
 
             <nav class="hidden xl:flex items-center space-x-10">
@@ -172,13 +185,10 @@
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
         <div class="flex justify-between items-center mb-12">
-            <div class="flex flex-col">
-                <span class="text-xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
-                <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.3em] mt-1">Visionary Realities</span>
-            </div>
+            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto">
             <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
         </div>
-        <nav class="flex flex-col space-y-6">
+        <nav class="flex flex-col space-y-8">
             <a href="index.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Home</a>
             <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
             <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
@@ -187,7 +197,7 @@
             <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
         </nav>
         <div class="mt-auto border-t pt-8">
-            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
         </div>
     </div>
 
@@ -196,21 +206,22 @@
         <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
             <div class="container mx-auto px-6 lg:px-8 relative z-10 text-center">
                 <div class="reveal">
-                    <span class="inline-block px-5 py-2 rounded-full border border-blue-100 bg-blue-50/50 text-blue-600 text-[9px] font-black uppercase tracking-[0.5em] mb-12">
+                    <!-- Size increased to 11px for better legibility -->
+                    <span class="inline-block px-6 py-2.5 rounded-full border border-blue-100 bg-blue-50/50 text-blue-600 text-[11px] font-bold uppercase tracking-[0.3em] mb-12">
                         Integrated Infrastructure Solutions
                     </span>
                     <h1 class="hero-title font-black text-slate-950 uppercase mb-16">
                         SHAPING <br/><span class="text-blue-600 italic font-light">VISIONARY</span><br/>REALITIES.
                     </h1>
                     <div class="flex flex-col sm:flex-row justify-center gap-6">
-                        <a href="services.html" class="btn-fluid bg-blue-600 text-white px-10 lg:px-14 py-6 lg:py-7 text-[10px] font-black uppercase tracking-widest">
+                        <a href="services.html" class="btn-fluid bg-blue-600 text-white px-10 lg:px-14 py-6 lg:py-7 text-xs font-black uppercase tracking-widest">
                             Explore Capability <i class="fas fa-arrow-right ml-4"></i>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-slate-300 text-[8px] uppercase font-black tracking-[0.6em]">
+            <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-slate-400 text-[10px] uppercase font-bold tracking-[0.4em]">
                 <span>Scroll</span>
                 <div class="w-[1px] h-16 lg:h-20 bg-gradient-to-b from-blue-500 to-transparent"></div>
             </div>
@@ -221,11 +232,11 @@
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-start">
                     <div class="reveal stagger-1">
-                        <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Introduction</span>
+                        <span class="text-blue-600 text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">Introduction</span>
                         <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter mb-8 lg:mb-12 leading-none">
                             Bold Ideas, <br/>Expertly Built.
                         </h2>
-                        <div class="space-y-6 lg:space-y-8 text-lg lg:text-xl text-slate-500 font-light leading-relaxed">
+                        <div class="space-y-6 lg:space-y-8 text-lg lg:text-xl text-slate-600 font-normal leading-relaxed">
                             <p>Ape Vision Group is a forward-looking organization delivering integrated solutions across the energy and infrastructure sectors.</p>
                             <p>Built on the principles of innovation, reliability, and sustainability, the group is committed to enabling modern infrastructure development and supporting the global transition toward cleaner systems.</p>
                         </div>
@@ -244,7 +255,7 @@
         <section id="industries" class="py-24 lg:py-40 bg-white">
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="max-w-4xl mb-16 lg:mb-24 reveal">
-                    <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Impact</span>
+                    <span class="text-blue-600 text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">Our Impact</span>
                     <h2 class="text-4xl lg:text-[8rem] font-black uppercase tracking-tighter leading-[0.85] mb-10">Technical <br/>Domains.</h2>
                 </div>
 
@@ -253,14 +264,14 @@
                     <a href="thermal-power.html" class="reveal stagger-1 industry-card group">
                         <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal">
                         <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 01</span>
+                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 01</span>
                             <h3 class="text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter">Thermal Power <br/>Plants (BOP)</h3>
                         </div>
                     </a>
                     <a href="renewable-energy.html" class="reveal stagger-2 industry-card group">
                         <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable">
                         <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 02</span>
+                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 02</span>
                             <h3 class="text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br>& BESS</h3>
                         </div>
                     </a>
@@ -271,21 +282,21 @@
                     <a href="green-hydrogen.html" class="reveal stagger-1 industry-card group h-[40vh] lg:h-[50vh] min-height-0">
                         <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Hydrogen">
                         <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 03</span>
+                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 03</span>
                             <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
                         </div>
                     </a>
                     <a href="data-centres.html" class="reveal stagger-2 industry-card group h-[40vh] lg:h-[50vh] min-height-0">
                         <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
                         <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 04</span>
+                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 04</span>
                             <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
                         </div>
                     </a>
                     <a href="smr.html" class="reveal stagger-3 industry-card group h-[40vh] lg:h-[50vh] min-height-0 md:col-span-2 lg:col-span-1">
                         <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
                         <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                            <span class="text-white/40 text-xs font-black mb-4 uppercase">Sector 05</span>
+                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 05</span>
                             <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br>Reactors</h3>
                         </div>
                     </a>
@@ -303,12 +314,12 @@
                         </div>
                     </div>
                     <div class="lg:col-span-7 reveal stagger-1">
-                        <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">MD & CEO</span>
+                        <span class="text-blue-500 text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">MD & CEO</span>
                         <h2 class="text-4xl lg:text-8xl font-black uppercase tracking-tighter leading-none mb-8 lg:mb-10">Mr. Sujit Shankar.</h2>
-                        <p class="text-slate-400 text-lg lg:text-xl font-light mb-10 lg:mb-12 max-w-xl">
+                        <p class="text-slate-400 text-lg lg:text-xl font-normal mb-10 lg:mb-12 max-w-xl leading-relaxed">
                             The strategic direction and growth of Ape Vision Group are driven by 35+ years of infrastructure expertise and leadership.
                         </p>
-                        <a href="brain-behind-avg.html" class="btn-fluid bg-blue-600 text-white px-10 lg:px-14 py-5 lg:py-6 text-[10px] font-black uppercase tracking-widest">
+                        <a href="brain-behind-avg.html" class="btn-fluid bg-blue-600 text-white px-10 lg:px-14 py-5 lg:py-6 text-xs font-black uppercase tracking-widest">
                             Read Biography <i class="fas fa-arrow-right ml-4"></i>
                         </a>
                     </div>
@@ -322,48 +333,49 @@
         <div class="container mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
                 <div class="max-w-md reveal">
-                    <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-4 lg:mt-6">Visionary Realities</p>
+                    <div class="mb-8">
+                        <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP Logo" class="h-16 w-auto mb-6">
+                    </div>
                     
                     <div class="mt-12 lg:mt-16">
-                        <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-6">Global Headquarters</span>
                         <div class="content-card !p-6 lg:!p-8 group cursor-default">
                             <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
                                 Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
                                 8 Square Zen, Sector-142, Noida,<br>
                                 Uttar Pradesh, India.
                             </p>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" target="_blank" class="text-[10px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" target="_blank" class="text-[11px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
                                 View on Google Maps <i class="fas fa-location-dot"></i>
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[11px] font-bold uppercase tracking-wider text-slate-500">
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Core</span>
                         <a href="about-us.html" class="hover:text-blue-600 transition">About Us</a>
                         <a href="services.html" class="hover:text-blue-600 transition">Our Services</a>
                         <a href="industries.html" class="hover:text-blue-600 transition">Industries</a>
                     </div>
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Company</span>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Company</span>
                         <a href="brain-behind-avg.html" class="hover:text-blue-600 transition">Leadership</a>
                         <a href="associates-clientele.html" class="hover:text-blue-600 transition">Associates</a>
                         <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
                     </div>
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Connect</span>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Connect</span>
                         <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
                         <a href="#" class="hover:text-blue-600 transition">Email Group</a>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] gap-8">
+            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 text-[11px] font-bold uppercase tracking-[0.3em] gap-8 text-center md:text-left">
                 <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
-                <span class="text-slate-300">ISO 9001:2015 CERTIFIED</span>
+                <span class="text-slate-400">ISO 9001:2015 CERTIFIED</span>
             </div>
         </div>
     </footer>
@@ -383,7 +395,6 @@
             document.body.style.overflow = '';
         });
 
-        // Close menu on link click
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('open');
