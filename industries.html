@@ -6,8 +6,7 @@
     <title>Industries We Serve | APE VISION GROUP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-navy: #0a0f1d;
@@ -28,7 +27,6 @@
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 1.4s var(--ease-out-expo), transform 1.4s var(--ease-out-expo);
-            will-change: transform, opacity;
         }
 
         .reveal.active {
@@ -36,15 +34,10 @@
             transform: translateY(0);
         }
 
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-
         .glass-nav {
-            background: rgba(255, 255, 255, 0.90);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: all 0.5s var(--ease-out-expo);
         }
 
@@ -52,26 +45,12 @@
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
             color: #475569;
-            position: relative;
             transition: color 0.3s ease;
         }
 
         .nav-link:hover, .nav-active { color: var(--brand-blue); }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 1.5px;
-            background: var(--brand-blue);
-            transition: width 0.4s var(--ease-out-expo);
-        }
-
-        .nav-link:hover::after, .nav-active::after { width: 100%; }
 
         .industry-card {
             position: relative;
@@ -79,13 +58,16 @@
             border-radius: 2rem;
             transition: all 0.8s var(--ease-out-expo);
             cursor: pointer;
-            min-height: 350px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
 
         @media (min-width: 1024px) {
             .industry-card {
                 border-radius: 2.5rem;
-                min-height: 450px;
+                min-height: 500px;
             }
         }
 
@@ -98,66 +80,63 @@
         }
 
         .industry-overlay {
-            background: linear-gradient(to top, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.2) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.3) 60%, transparent 100%);
             transition: background 0.5s var(--ease-out-expo);
         }
 
         .industry-card:hover .industry-overlay {
-            background: linear-gradient(to top, rgba(37, 99, 235, 0.9) 0%, rgba(10, 15, 29, 0.4) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(37, 99, 235, 0.85) 0%, rgba(10, 15, 29, 0.5) 70%, transparent 100%);
         }
 
+        .brand-logo { height: 52px; width: auto; object-fit: contain; }
+        
         #progress-bar {
             position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--brand-blue);
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
         #mobile-menu {
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
             transform: translateX(100%);
         }
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-
-        /* Logo styling for legibility and presence */
-        .brand-logo {
-            height: 54px;
-            width: auto;
-            object-fit: contain;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
+        #mobile-menu.open { transform: translateX(0); }
     </style>
 </head>
 <body>
 
     <div id="progress-bar"></div>
 
-    <!-- Navigation -->
-    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-12 py-4" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <a href="index.html" class="flex items-center group cursor-pointer">
+            <a href="index.html" class="flex items-center group">
                 <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
             </a>
-
             <nav class="hidden xl:flex items-center space-x-10">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="about-us.html" class="nav-link">About Us</a>
                 <a href="services.html" class="nav-link">Our Services</a>
                 <a href="industries.html" class="nav-link nav-active">Industries</a>
-                <a href="brain-behind-avg.html" class="nav-link">Brain Behind AVG</a>
-                <a href="associates-clientele.html" class="nav-link">Associates & Clientele</a>
-                <a href="contact.html" class="nav-link">Contact Us</a>
+                <a href="brain-behind-avg.html" class="nav-link">Leadership</a>
+                <a href="associates-clientele.html" class="nav-link">Associates</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </nav>
-
-            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2">
-                <i class="fas fa-bars-staggered"></i>
-            </button>
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl"><i class="fas fa-bars-staggered"></i></button>
         </div>
     </header>
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
         <div class="flex justify-between items-center mb-12">
-            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto">
+            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-10 w-auto">
             <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
         </div>
         <nav class="flex flex-col space-y-8">
@@ -165,152 +144,113 @@
             <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
             <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
             <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Industries</a>
-            <a href="brain-behind-avg.html" class="text-3xl font-black uppercase tracking-tighter">Leadership</a>
             <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
         </nav>
-        <div class="mt-auto border-t pt-8">
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
-        </div>
     </div>
 
     <main>
         <!-- Hero Section -->
-        <section class="pt-32 lg:pt-40 pb-16 lg:pb-24 bg-white overflow-hidden">
-            <div class="container mx-auto px-6 lg:px-8">
+        <section class="pt-40 lg:pt-56 pb-20 lg:pb-32 bg-white overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-12">
                 <div class="max-w-4xl reveal">
-                    <span class="text-blue-600 text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">Our Reach</span>
-                    <h1 class="text-4xl lg:text-[8rem] font-black uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] mb-8 lg:mb-12">Industries <br/>We Serve.</h1>
-                    <p class="text-xl lg:text-2xl text-slate-600 font-normal leading-relaxed max-w-3xl">
-                        AVG delivers engineering, project management, and execution support across high-complexity energy and infrastructure sectors. Our experience spans from conventional power to emerging clean technologies.
+                    <span class="section-label">Our Domain Expertise</span>
+                    <h1 class="text-5xl lg:text-[7rem] font-black uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] mb-10">Industries <br/>We Serve.</h1>
+                    <p class="text-xl lg:text-2xl text-slate-500 font-light leading-relaxed max-w-2xl">
+                        AVG delivers engineering, project management, and execution support across high-complexity energy and infrastructure sectors.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Industry Grid Architecture -->
-        <section class="py-16 lg:py-24 bg-slate-50">
-            <div class="container mx-auto px-6 lg:px-8">
-                <div class="space-y-6 lg:space-y-8">
-                    <!-- Row 1: High-Impact Dual Grid -->
-                    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
-                        <div class="reveal stagger-1 industry-card group">
-                            <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal Power">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">Utility | Captive | Steam</span>
-                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">Conventional Thermal <br/>Power Plants (BOP)</h3>
-                            </div>
+        <!-- Industry Grid -->
+        <section class="py-12 lg:py-24 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 mb-10">
+                    <!-- 01 Thermal -->
+                    <a href="thermal.html" class="industry-card group reveal">
+                        <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal Power">
+                        <div class="absolute inset-0 industry-overlay p-10 lg:p-14">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-4 block">Sector 01</span>
+                            <h3 class="text-3xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-tight">Thermal Power <br/>Plants (BOP)</h3>
+                            <p class="text-white/70 text-sm mt-6 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity">Utility and captive plant infrastructure execution.</p>
                         </div>
-                        <div class="reveal stagger-2 industry-card group">
-                            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable Energy">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">Solar | Hybrid | Storage</span>
-                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br/>& BESS</h3>
-                            </div>
+                    </a>
+                    <!-- 02 Renewable -->
+                    <a href="bess.html" class="industry-card group reveal stagger-1">
+                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable Energy">
+                        <div class="absolute inset-0 industry-overlay p-10 lg:p-14">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-4 block">Sector 02</span>
+                            <h3 class="text-3xl lg:text-5xl font-black text-white uppercase tracking-tighter leading-tight">Renewable Energy <br/>& BESS</h3>
+                            <p class="text-white/70 text-sm mt-6 max-w-sm opacity-0 group-hover:opacity-100 transition-opacity">Integrated solar, hybrid, and battery storage logic.</p>
                         </div>
-                    </div>
-
-                    <!-- Row 2: Triple Grid -->
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                        <div class="reveal stagger-1 industry-card group min-height-0 h-[400px] lg:h-[500px]">
-                            <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Green Hydrogen">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">Decarbonisation | Mobility</span>
-                                <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-2 industry-card group min-height-0 h-[400px] lg:h-[500px]">
-                            <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">Hyperscale | Colocation</span>
-                                <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-3 industry-card group min-height-0 h-[400px] lg:h-[500px] md:col-span-2 lg:col-span-1">
-                            <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">Nuclear | Safety | Compliance</span>
-                                <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br/>Reactors (SMR)</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Row 3: Emerging Tech Dual Grid -->
-                    <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
-                        <div class="reveal stagger-1 industry-card group">
-                            <img src="https://lh3.googleusercontent.com/d/1oEcz-saC0Qq_tS6vkWj3eGinYetrNq_0" class="absolute inset-0 w-full h-full object-cover" alt="AI Chip Manufacturing">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">Precision | Semiconductor</span>
-                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">AI Chip <br/>Manufacturing</h3>
-                            </div>
-                        </div>
-                        <div class="reveal stagger-2 industry-card group">
-                            <img src="https://lh3.googleusercontent.com/d/1ac6Z6NtXwUPGoclC-ywtCY9FGDHGVD55" class="absolute inset-0 w-full h-full object-cover" alt="Carbon Capture">
-                            <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                                <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-[0.2em]">CCUS | Decarbonisation</span>
-                                <h3 class="text-2xl lg:text-4xl font-black text-white uppercase tracking-tighter">Carbon Capture <br/>(CCUS)</h3>
-                            </div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-        </section>
 
-        <!-- CTA Section -->
-        <section class="py-20 lg:py-32 bg-white text-center">
-            <div class="container mx-auto px-6 lg:px-8 reveal">
-                <h3 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter mb-10 lg:mb-12 leading-tight">Ready to Evolve <br class="hidden md:block"/>Your Infrastructure?</h3>
-                <a href="contact.html" class="inline-flex items-center gap-4 bg-blue-600 text-white px-10 lg:px-14 py-5 lg:py-7 rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
-                    Get Industry Support <i class="fas fa-arrow-right"></i>
-                </a>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+                    <!-- 03 Green Hydrogen -->
+                    <a href="greenhydrogen.html" class="industry-card group reveal">
+                        <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Green Hydrogen">
+                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">Sector 03</span>
+                            <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter leading-tight">Green <br/>Hydrogen</h3>
+                            <p class="text-white/70 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity">P2X infrastructure and energy conversion.</p>
+                        </div>
+                    </a>
+                    <!-- 04 Data Centres -->
+                    <a href="dc.html" class="industry-card group reveal stagger-1">
+                        <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
+                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">Sector 04</span>
+                            <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter leading-tight">Data Centre <br/>Infrastructure</h3>
+                            <p class="text-white/70 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity">Uptime-critical systems and hyperscale MEP.</p>
+                        </div>
+                    </a>
+                    <!-- 05 SMR -->
+                    <a href="smr.html" class="industry-card group reveal stagger-2">
+                        <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
+                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">Sector 05</span>
+                            <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter leading-tight">Small Modular <br/>Reactors (SMR)</h3>
+                            <p class="text-white/70 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity">Atomic precision and containment engineering.</p>
+                        </div>
+                    </a>
+                    <!-- 06 AI Chip -->
+                    <a href="aichip.html" class="industry-card group reveal">
+                        <img src="https://lh3.googleusercontent.com/d/1oEcz-saC0Qq_tS6vkWj3eGinYetrNq_0" class="absolute inset-0 w-full h-full object-cover" alt="AI Chips">
+                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">Sector 06</span>
+                            <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter leading-tight">AI Chip <br/>Manufacturing</h3>
+                            <p class="text-white/70 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity">Cleanroom compliance and Fab infrastructure.</p>
+                        </div>
+                    </a>
+                    <!-- 07 Carbon Capture -->
+                    <a href="carboncapture.html" class="industry-card group reveal stagger-1 md:col-span-2 lg:col-span-1">
+                        <img src="https://lh3.googleusercontent.com/d/1ac6Z6NtXwUPGoclC-ywtCY9FGDHGVD55" class="absolute inset-0 w-full h-full object-cover" alt="Carbon Capture">
+                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12">
+                            <span class="text-white/50 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block">Sector 07</span>
+                            <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter leading-tight">Carbon Capture <br/>(CCUS)</h3>
+                            <p class="text-white/70 text-xs mt-4 opacity-0 group-hover:opacity-100 transition-opacity">Emission validation and integration support.</p>
+                        </div>
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-slate-100 pt-20 lg:pt-32 pb-16">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
-                <div class="max-w-md reveal">
-                    <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP Logo" class="h-16 w-auto mb-6">
-                    
-                    <div class="mt-12 lg:mt-16">
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-6">Global Headquarters</span>
-                        <div class="p-6 lg:p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
-                            <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
-                                Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
-                                8 Square Zen, Sector-142, Noida,<br>
-                                Uttar Pradesh, India.
-                            </p>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" target="_blank" class="text-[11px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
-                                View on Google Maps <i class="fas fa-location-dot"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[11px] font-bold uppercase tracking-wider text-slate-500 reveal stagger-1">
-                    <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Core</span>
-                        <a href="index.html" class="hover:text-blue-600 transition">Home</a>
-                        <a href="about-us.html" class="hover:text-blue-600 transition">About Us</a>
-                        <a href="services.html" class="hover:text-blue-600 transition">Services</a>
-                    </div>
-                    <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Company</span>
-                        <a href="brain-behind-avg.html" class="hover:text-blue-600 transition">Leadership</a>
-                        <a href="associates-clientele.html" class="hover:text-blue-600 transition">Associates</a>
-                        <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
-                    </div>
-                    <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Connect</span>
-                        <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
-                        <a href="#" class="hover:text-blue-600 transition">Email Group</a>
-                    </div>
-                </div>
+    <footer class="bg-white border-t border-slate-100 py-20">
+        <div class="container mx-auto px-6 lg:px-12 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-14 w-auto">
+                <nav class="flex gap-8 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <a href="services.html" class="hover:text-blue-600 transition">Services</a>
+                    <a href="industries.html" class="hover:text-blue-600 transition">Industries</a>
+                    <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
+                </nav>
             </div>
-            
-            <div class="border-t border-slate-100 pt-12 text-slate-500 text-[11px] font-bold uppercase tracking-[0.3em] text-center">
-                &copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.
+            <div class="border-t border-slate-100 pt-12 text-slate-400 text-[11px] font-bold uppercase tracking-[0.3em] flex flex-col md:flex-row justify-between gap-4">
+                <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
+                <span class="text-slate-300">ISO 9001:2015 CERTIFIED</span>
             </div>
         </div>
     </footer>
@@ -320,22 +260,8 @@
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-
-        menuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
+        menuToggle?.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+        menuClose?.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
 
         function initReveal() {
             const observer = new IntersectionObserver((entries) => {
@@ -347,19 +273,14 @@
         }
 
         window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
             const bar = document.getElementById("progress-bar");
-            if(bar) bar.style.width = scrolled + "%";
+            if(bar) bar.style.width = ((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100) + "%";
 
             const nav = document.getElementById('navbar');
             if (window.scrollY > 80) {
-                nav.style.padding = '0.8rem 1.5rem';
-                nav.classList.add('shadow-sm');
+                nav.style.padding = '0.75rem 3rem';
             } else {
-                nav.style.padding = '1.25rem 2rem';
-                nav.classList.remove('shadow-sm');
+                nav.style.padding = '1rem 3rem';
             }
         });
 
