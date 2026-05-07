@@ -43,6 +43,7 @@
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s var(--ease-out-expo);
         }
 
         .nav-link {
@@ -81,11 +82,11 @@
         }
         
         .association-tag {
-            padding: 12px 24px;
+            padding: 10px 20px;
             background: #f8fafc;
             border: 1px solid #f1f5f9;
             border-radius: 100px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -93,20 +94,35 @@
             transition: all 0.4s var(--ease-out-expo);
         }
 
+        @media (min-width: 1024px) {
+            .association-tag {
+                padding: 12px 24px;
+                font-size: 10px;
+            }
+        }
+
         .profile-container {
-            border-radius: 3rem;
+            border-radius: 2rem;
             overflow: hidden;
             box-shadow: 0 50px 100px -20px rgba(0,0,0,0.15);
         }
 
+        @media (min-width: 1024px) {
+            .profile-container {
+                border-radius: 3rem;
+            }
+        }
+
         #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--brand-blue);
-            z-index: 1001;
-            width: 0%;
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        #mobile-menu {
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -114,7 +130,8 @@
 
     <div id="progress-bar"></div>
 
-    <header class="glass-nav fixed top-0 w-full z-[1000] px-8 py-5">
+    <!-- Navigation -->
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
             <a href="index.html" class="flex flex-col group cursor-pointer">
                 <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
@@ -131,35 +148,58 @@
                 <a href="contact.html" class="nav-link">Contact Us</a>
             </nav>
 
-            <button class="xl:hidden text-slate-900 text-xl">
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2">
                 <i class="fas fa-bars-staggered"></i>
             </button>
         </div>
     </header>
 
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
+        <div class="flex justify-between items-center mb-12">
+            <div class="flex flex-col">
+                <span class="text-xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
+                <span class="text-[8px] font-bold text-blue-500 uppercase tracking-[0.3em] mt-1">Visionary Realities</span>
+            </div>
+            <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-6">
+            <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Home</a>
+            <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
+            <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
+            <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter">Industries</a>
+            <a href="brain-behind-avg.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Leadership</a>
+            <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
+        </nav>
+        <div class="mt-auto border-t pt-8">
+            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
+        </div>
+    </div>
+
     <main>
-        <section class="pt-40 pb-20 bg-white overflow-hidden">
-            <div class="container mx-auto px-8">
+        <!-- Hero Section -->
+        <section class="pt-32 lg:pt-48 pb-16 lg:pb-24 bg-white overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8">
                 <div class="reveal">
                     <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Leadership Profile</span>
-                    <h1 class="text-6xl md:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] mb-24">The Brain <br/>Behind AVG.</h1>
+                    <h1 class="text-4xl lg:text-[9rem] font-black uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] mb-12 lg:mb-24">The Brain <br/>Behind AVG.</h1>
                 </div>
 
-                <div class="grid lg:grid-cols-12 gap-20 items-start">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
                     <!-- Profile Image & Bio Sidebar -->
                     <div class="lg:col-span-5 reveal stagger-1">
                         <div class="profile-container bg-slate-100 aspect-[4/5]">
                             <img src="https://lh3.googleusercontent.com/d/1w9Oyjz5Agfno7wN1_HAn9lMZgwDygnXr" 
                                  class="w-full h-full object-cover" alt="Mr. Sujit Shankar">
                         </div>
-                        <div class="mt-12">
-                            <h2 class="text-3xl font-black uppercase tracking-tight text-slate-950">Mr. Sujit Shankar</h2>
-                            <p class="text-blue-600 font-black text-[11px] uppercase tracking-[0.3em] mt-3">Managing Director & CEO</p>
+                        <div class="mt-8 lg:mt-12">
+                            <h2 class="text-2xl lg:text-3xl font-black uppercase tracking-tight text-slate-950">Mr. Sujit Shankar</h2>
+                            <p class="text-blue-600 font-black text-[10px] lg:text-[11px] uppercase tracking-[0.3em] mt-3">Managing Director & CEO</p>
                         </div>
                     </div>
 
                     <div class="lg:col-span-7 reveal stagger-2">
-                        <div class="space-y-10 text-xl text-slate-500 font-light leading-relaxed mb-20">
+                        <div class="space-y-8 lg:space-y-10 text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-16 lg:mb-20">
                             <p class="text-slate-950 font-semibold">The strategic direction and growth of Ape Vision Group are driven by its core leadership team, with key leadership under Mr. Sujit Shankar.</p>
                             
                             <p>Mr. Shankar is associated with <strong>Ace Premier Enterprises</strong>, <strong>Ape Vision LLP</strong>, and <strong>Ape Vision Techinfra Pvt. Ltd.</strong>, and plays a vital role in guiding the group's long-term vision in the energy and infrastructure domain.</p>
@@ -167,40 +207,40 @@
                             <p>With a strong focus on innovation, project development, and sustainable business growth, he leads Ape Vision Group's commitment to delivering high-impact solutions that support modern infrastructure development and the transition toward cleaner energy systems.</p>
                         </div>
 
-                        <!-- Professional Credentials Grid (Data from Image) -->
+                        <!-- Professional Credentials Grid -->
                         <div class="space-y-6">
-                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-8">Professional Strategic Foundation</span>
+                            <span class="text-[9px] lg:text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-8">Professional Strategic Foundation</span>
                             
-                            <div class="grid md:grid-cols-2 gap-8">
+                            <div class="grid sm:grid-cols-2 gap-6 lg:gap-8">
                                 <div class="credential-item" style="border-left-color: #1e3a8a;">
                                     <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Education</span>
-                                    <p class="text-lg font-bold text-slate-900">B.Tech (Engineering)</p>
+                                    <p class="text-base lg:text-lg font-bold text-slate-900">B.Tech (Engineering)</p>
                                 </div>
                                 <div class="credential-item" style="border-left-color: #ea580c;">
                                     <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Management</span>
-                                    <p class="text-lg font-bold text-slate-900">IIM Calcutta</p>
+                                    <p class="text-base lg:text-lg font-bold text-slate-900">IIM Calcutta</p>
                                 </div>
                                 <div class="credential-item" style="border-left-color: #166534;">
                                     <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Specialization</span>
-                                    <p class="text-lg font-bold text-slate-900">Project Management — IIT Delhi</p>
+                                    <p class="text-base lg:text-lg font-bold text-slate-900">Project Management — IIT Delhi</p>
                                 </div>
                                 <div class="credential-item" style="border-left-color: #86198f;">
                                     <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Experience</span>
-                                    <p class="text-lg font-bold text-slate-900">35+ Years</p>
+                                    <p class="text-base lg:text-lg font-bold text-slate-900">35+ Years</p>
                                 </div>
                             </div>
 
-                            <div class="credential-item mt-12" style="border-left-color: #c2410c;">
+                            <div class="credential-item mt-10 lg:mt-12" style="border-left-color: #c2410c;">
                                 <span class="text-[8px] font-black uppercase text-slate-400 block mb-1">Past Strategic Roles</span>
-                                <p class="text-lg font-bold text-slate-900 leading-relaxed">
+                                <p class="text-base lg:text-lg font-bold text-slate-900 leading-relaxed">
                                     DCPL · Reliance Infrastructure (CEO) · Punj Lloyd & more
                                 </p>
                             </div>
                         </div>
 
-                        <div class="mt-24">
-                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-8">Group Entities</span>
-                            <div class="flex flex-wrap gap-4">
+                        <div class="mt-16 lg:mt-24">
+                            <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6 lg:mb-8">Group Entities</span>
+                            <div class="flex flex-wrap gap-3 lg:gap-4">
                                 <div class="association-tag">Ace Premier Enterprises</div>
                                 <div class="association-tag">Ape Vision LLP</div>
                                 <div class="association-tag">Ape Vision Techinfra Pvt. Ltd.</div>
@@ -211,11 +251,12 @@
             </div>
         </section>
 
-        <section class="py-32 bg-slate-50 text-center">
-            <div class="container mx-auto px-8">
+        <!-- CTA Section -->
+        <section class="py-20 lg:py-32 bg-slate-50 text-center">
+            <div class="container mx-auto px-6 lg:px-8">
                 <div class="reveal">
-                    <h3 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-12">Connect for <br/>Strategic Partnerships</h3>
-                    <a href="mailto:info@apevisiongroup.com" class="inline-flex items-center gap-4 bg-blue-600 text-white px-12 py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
+                    <h3 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter mb-10 lg:mb-12 leading-tight">Connect for <br class="hidden md:block"/>Strategic Partnerships</h3>
+                    <a href="mailto:info@apevisiongroup.com" class="inline-flex items-center gap-4 bg-blue-600 text-white px-10 lg:px-12 py-5 lg:py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
                         Inquiry for CEO's Office <i class="fas fa-paper-plane"></i>
                     </a>
                 </div>
@@ -223,16 +264,17 @@
         </section>
     </main>
 
-    <footer class="bg-white border-t border-slate-100 pt-32 pb-16">
-        <div class="container mx-auto px-8">
-            <div class="flex flex-col lg:flex-row justify-between gap-24 mb-32">
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 pt-20 lg:pt-32 pb-16">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
                 <div class="max-w-md reveal">
                     <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-6">Visionary Realities</p>
+                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-4 lg:mt-6">Visionary Realities</p>
                     
-                    <div class="mt-16">
+                    <div class="mt-12 lg:mt-16">
                         <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
-                        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                        <div class="p-6 lg:p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
                             <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
                                 Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
                                 8 Square Zen, Sector-142, Noida,<br>
@@ -246,7 +288,7 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[9px] font-black uppercase tracking-widest text-slate-400">
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
                         <a href="index.html" class="hover:text-blue-600 transition">Home</a>
@@ -274,6 +316,27 @@
     </footer>
 
     <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
         function initReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -287,7 +350,15 @@
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
+            const bar = document.getElementById("progress-bar");
+            if(bar) bar.style.width = scrolled + "%";
+
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.style.padding = '0.8rem 1.5rem';
+            } else {
+                nav.style.padding = '1.25rem 2rem';
+            }
         });
 
         window.onload = initReveal;
