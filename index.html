@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APE VISION GROUP | Visionary Realities</title>
+    <title>APE VISION GROUP | Shaping Visionary Realities</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --brand-navy: #0a0f1d;
@@ -21,7 +20,6 @@
             color: var(--brand-navy);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            /* Improved baseline legibility */
             line-height: 1.6;
         }
 
@@ -39,7 +37,6 @@
 
         .stagger-1 { transition-delay: 0.1s; }
         .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
 
         .hero-title {
             line-height: 0.82;
@@ -50,13 +47,11 @@
         .glass-nav {
             background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
             transition: all 0.5s var(--ease-out-expo);
         }
 
         .nav-link {
-            /* Increased from 8.5px for legibility */
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -65,42 +60,76 @@
             position: relative;
             transition: color 0.3s ease;
         }
-
         .nav-link:hover { color: var(--brand-blue); }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 1.5px;
-            background: var(--brand-blue);
-            transition: width 0.4s var(--ease-out-expo);
+
+        /* Industry Slider Specifics */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
-        .nav-link:hover::after { width: 100%; }
+        .slider-track {
+            display: flex;
+            transition: transform 1.2s var(--ease-out-expo);
+            gap: 2rem;
+        }
+
+        .slide-item {
+            flex: 0 0 calc(100% - 1rem);
+            max-width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .slide-item {
+                flex: 0 0 calc(50% - 1rem);
+            }
+        }
 
         .industry-card {
-            height: 70vh;
-            min-height: 500px;
+            height: 60vh;
+            min-height: 450px;
             position: relative;
             overflow: hidden;
             border-radius: 2.5rem;
-            transition: all 0.8s var(--ease-out-expo);
             cursor: pointer;
         }
 
-        .industry-card img {
-            transition: transform 1.2s var(--ease-out-expo);
-        }
-
-        .industry-card:hover img {
-            transform: scale(1.1);
-        }
+        .industry-card img { transition: transform 1.2s var(--ease-out-expo); }
+        .industry-card:hover img { transform: scale(1.1); }
 
         .industry-overlay {
             background: linear-gradient(to top, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.2) 60%, transparent 100%);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            transition: all 0.4s var(--ease-out-expo);
+            cursor: pointer;
+        }
+        .dot.active {
+            width: 32px;
+            background: var(--brand-blue);
+            border-radius: 100px;
+        }
+
+        /* Services Pill */
+        .service-list-card {
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            padding: 2rem;
+            border-radius: 2rem;
+            transition: all 0.5s var(--ease-out-expo);
+            height: 100%;
+        }
+        .service-list-card:hover {
+            background: #ffffff;
+            border-color: var(--brand-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.1);
         }
 
         .btn-fluid {
@@ -111,61 +140,32 @@
             justify-content: center;
         }
 
-        .btn-fluid:hover {
-            transform: scale(1.03) translateY(-2px);
-            box-shadow: 0 30px 60px -12px rgba(37, 99, 235, 0.25);
-        }
-
         #progress-bar {
             position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
         }
 
-        .content-card {
-            background: #f8fafc;
-            border: 1px solid #f1f5f9;
-            padding: 2.5rem;
-            border-radius: 2.5rem;
-            transition: all 0.5s var(--ease-out-expo);
-        }
-
-        .content-card:hover {
-            background: #ffffff;
-            border-color: var(--brand-blue);
-            transform: translateY(-10px);
-            box-shadow: 0 40px 80px -20px rgba(37, 99, 235, 0.1);
+        .brand-logo {
+            height: 54px;
+            width: auto;
+            object-fit: contain;
         }
 
         #mobile-menu {
             transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
             transform: translateX(100%);
         }
-        #mobile-menu.open {
-            transform: translateX(0);
-        }
-
-        /* Logo styling */
-        .brand-logo {
-            height: 54px;
-            width: auto;
-            object-fit: contain;
-            transition: transform 0.4s var(--ease-out-expo);
-        }
-        .group:hover .brand-logo {
-            transform: scale(1.05);
-        }
+        #mobile-menu.open { transform: translateX(0); }
     </style>
 </head>
 <body>
-
     <div id="progress-bar"></div>
 
     <!-- Navigation -->
-    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-12 py-4" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <div class="flex items-center group cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <a href="index.html" class="flex items-center group cursor-pointer">
                 <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
-            </div>
-
+            </a>
             <nav class="hidden xl:flex items-center space-x-10">
                 <a href="index.html" class="nav-link text-blue-600">Home</a>
                 <a href="about-us.html" class="nav-link">About Us</a>
@@ -175,17 +175,14 @@
                 <a href="associates-clientele.html" class="nav-link">Associates & Clientele</a>
                 <a href="contact.html" class="nav-link">Contact Us</a>
             </nav>
-
-            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2">
-                <i class="fas fa-bars-staggered"></i>
-            </button>
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2"><i class="fas fa-bars-staggered"></i></button>
         </div>
     </header>
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
         <div class="flex justify-between items-center mb-12">
-            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto">
+            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-10 w-auto">
             <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
         </div>
         <nav class="flex flex-col space-y-8">
@@ -193,12 +190,8 @@
             <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
             <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
             <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter">Industries</a>
-            <a href="brain-behind-avg.html" class="text-3xl font-black uppercase tracking-tighter">Leadership</a>
             <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
         </nav>
-        <div class="mt-auto border-t pt-8">
-            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
-        </div>
     </div>
 
     <main>
@@ -206,7 +199,6 @@
         <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
             <div class="container mx-auto px-6 lg:px-8 relative z-10 text-center">
                 <div class="reveal">
-                    <!-- Size increased to 11px for better legibility -->
                     <span class="inline-block px-6 py-2.5 rounded-full border border-blue-100 bg-blue-50/50 text-blue-600 text-[11px] font-bold uppercase tracking-[0.3em] mb-12">
                         Integrated Infrastructure Solutions
                     </span>
@@ -220,7 +212,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-slate-400 text-[10px] uppercase font-bold tracking-[0.4em]">
                 <span>Scroll</span>
                 <div class="w-[1px] h-16 lg:h-20 bg-gradient-to-b from-blue-500 to-transparent"></div>
@@ -243,7 +234,7 @@
                     </div>
                     <div class="reveal stagger-2">
                         <div class="aspect-square rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden shadow-2xl relative group">
-                            <img src="https://lh3.googleusercontent.com/d/1z2lT8vYOsf86b_dx1lr3dUZp4UsKnP1n" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="About Image">
+                            <img src="https://lh3.googleusercontent.com/d/1z2lT8vYOsf86b_dx1lr3dUZp4UsKnP1n" class="w-full h-full object-cover transition duration-1000 group-hover:scale-110" alt="Infrastructure">
                             <div class="absolute inset-0 bg-blue-900/10 mix-blend-multiply"></div>
                         </div>
                     </div>
@@ -251,7 +242,7 @@
             </div>
         </section>
 
-        <!-- Industries Section -->
+        <!-- Technical Domains Slideshow Section -->
         <section id="industries" class="py-24 lg:py-40 bg-white">
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="max-w-4xl mb-16 lg:mb-24 reveal">
@@ -259,47 +250,108 @@
                     <h2 class="text-4xl lg:text-[8rem] font-black uppercase tracking-tighter leading-[0.85] mb-10">Technical <br/>Domains.</h2>
                 </div>
 
-                <!-- Main Sector Grid -->
-                <div class="grid lg:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
-                    <a href="thermal.html" class="reveal stagger-1 industry-card group">
-                        <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal">
-                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 01</span>
-                            <h3 class="text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter">Thermal Power <br/>Plants (BOP)</h3>
+                <!-- Slider Component -->
+                <div class="slider-wrapper reveal stagger-1">
+                    <div class="slider-track" id="sliderTrack">
+                        <!-- Sector 01 -->
+                        <div class="slide-item">
+                            <a href="thermal-power.html" class="industry-card group block">
+                                <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover" alt="Thermal">
+                                <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                                    <span class="text-white/60 text-[10px] font-bold mb-3 uppercase tracking-widest">Sector 01</span>
+                                    <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter">Thermal Power <br/>Plants (BOP)</h3>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                    <a href="bess.html" class="reveal stagger-2 industry-card group">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable">
-                        <div class="absolute inset-0 industry-overlay p-8 lg:p-12 flex flex-col justify-end">
-                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 02</span>
-                            <h3 class="text-3xl lg:text-4xl font-black text-white uppercase tracking-tighter">Renewable Energy <br>& BESS</h3>
+                        <!-- Sector 02 -->
+                        <div class="slide-item">
+                            <a href="renewable-energy.html" class="industry-card group block">
+                                <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=1200" class="absolute inset-0 w-full h-full object-cover" alt="Renewable">
+                                <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                                    <span class="text-white/60 text-[10px] font-bold mb-3 uppercase tracking-widest">Sector 02</span>
+                                    <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter">Renewable Energy <br/>& BESS</h3>
+                                </div>
+                            </a>
                         </div>
-                    </a>
+                        <!-- Sector 03 -->
+                        <div class="slide-item">
+                            <a href="green-hydrogen.html" class="industry-card group block">
+                                <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Hydrogen">
+                                <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                                    <span class="text-white/60 text-[10px] font-bold mb-3 uppercase tracking-widest">Sector 03</span>
+                                    <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Sector 04 -->
+                        <div class="slide-item">
+                            <a href="data-centres.html" class="industry-card group block">
+                                <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
+                                <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                                    <span class="text-white/60 text-[10px] font-bold mb-3 uppercase tracking-widest">Sector 04</span>
+                                    <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Sector 05 -->
+                        <div class="slide-item">
+                            <a href="smr.html" class="industry-card group block">
+                                <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
+                                <div class="absolute inset-0 industry-overlay p-10 flex flex-col justify-end">
+                                    <span class="text-white/60 text-[10px] font-bold mb-3 uppercase tracking-widest">Sector 05</span>
+                                    <h3 class="text-2xl lg:text-3xl font-black text-white uppercase tracking-tighter">Small Modular <br/>Reactors</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Secondary Sector Grid -->
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    <a href="greenhydrogen.html" class="reveal stagger-1 industry-card group h-[40vh] lg:h-[50vh] min-height-0">
-                        <img src="https://lh3.googleusercontent.com/d/1OkWMfqN-diAIw_oxWgE7KUPwTvCAbnr_" class="absolute inset-0 w-full h-full object-cover" alt="Hydrogen">
-                        <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 03</span>
-                            <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Green Hydrogen</h3>
+                <!-- Slider Navigation -->
+                <div class="flex justify-between items-center mt-12 reveal stagger-2">
+                    <div class="flex gap-4" id="sliderDots"></div>
+                    <div class="flex gap-4">
+                        <button id="prevSlide" class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fas fa-chevron-left"></i></button>
+                        <button id="nextSlide" class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brief Services Overview Section -->
+        <section id="services-brief" class="py-24 lg:py-40 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-16 items-start">
+                    <div class="lg:col-span-4 reveal">
+                        <span class="text-blue-600 text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">Capabilities</span>
+                        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-8 leading-none">
+                            Our <br/>Services.
+                        </h2>
+                        <p class="text-slate-500 mb-10 font-medium">AVG provides single-point responsibility across the project lifecycle.</p>
+                        <a href="services.html" class="btn-fluid bg-blue-600 text-white px-8 py-5 text-[11px] font-black uppercase tracking-[0.2em]">
+                            Full Services Catalog <i class="fas fa-arrow-right ml-4"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="lg:col-span-8">
+                        <div class="grid md:grid-cols-2 gap-6 reveal stagger-1">
+                            <div class="service-list-card">
+                                <h4 class="font-black uppercase text-sm tracking-widest mb-4">Feasibility & DPR</h4>
+                                <p class="text-slate-500 text-xs leading-relaxed">Technical viability assessment and execution-ready roadmaps for major approvals.</p>
+                            </div>
+                            <div class="service-list-card">
+                                <h4 class="font-black uppercase text-sm tracking-widest mb-4">Detailed Engineering</h4>
+                                <p class="text-slate-500 text-xs leading-relaxed">Multi-discipline design coordination covering Civil, Mechanical, and Electrical lots.</p>
+                            </div>
+                            <div class="service-list-card">
+                                <h4 class="font-black uppercase text-sm tracking-widest mb-4">PMC Services</h4>
+                                <p class="text-slate-500 text-xs leading-relaxed">Disciplined governance of time, cost, and quality across complex vendor interfaces.</p>
+                            </div>
+                            <div class="service-list-card">
+                                <h4 class="font-black uppercase text-sm tracking-widest mb-4">Turnkey Execution</h4>
+                                <p class="text-slate-500 text-xs leading-relaxed">Single-point responsibility from engineering concept to final site commissioning.</p>
+                            </div>
                         </div>
-                    </a>
-                    <a href="dc.html" class="reveal stagger-2 industry-card group h-[40vh] lg:h-[50vh] min-height-0">
-                        <img src="https://lh3.googleusercontent.com/d/1x-K58unRnlQ0jYerdBAUpItTBiV-35Pr" class="absolute inset-0 w-full h-full object-cover" alt="Data Centres">
-                        <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 04</span>
-                            <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Data Centres</h3>
-                        </div>
-                    </a>
-                    <a href="smr.html" class="reveal stagger-3 industry-card group h-[40vh] lg:h-[50vh] min-height-0 md:col-span-2 lg:col-span-1">
-                        <img src="https://lh3.googleusercontent.com/d/1ssdw88QnuK5CwbTllSmjxf3kR-6XJCDK" class="absolute inset-0 w-full h-full object-cover" alt="SMR">
-                        <div class="absolute inset-0 industry-overlay p-8 lg:p-10 flex flex-col justify-end">
-                            <span class="text-white/60 text-xs font-bold mb-4 uppercase tracking-widest">Sector 05</span>
-                            <h3 class="text-xl lg:text-2xl font-black text-white uppercase tracking-tighter">Small Modular <br>Reactors</h3>
-                        </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -310,7 +362,7 @@
                 <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
                     <div class="lg:col-span-5 reveal">
                         <div class="aspect-[4/5] rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden border-[8px] lg:border-[12px] border-white/5 shadow-2xl">
-                            <img src="https://lh3.googleusercontent.com/d/1w9Oyjz5Agfno7wN1_HAn9lMZgwDygnXr" class="w-full h-full object-cover" alt="Mr. Sujit Shankar">
+                            <img src="https://lh3.googleusercontent.com/d/1w9Oyjz5Agfno7wN1_HAn9lMZgwDygnXr" class="w-full h-full object-cover" alt="Leadership">
                         </div>
                     </div>
                     <div class="lg:col-span-7 reveal stagger-1">
@@ -330,106 +382,120 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-100 pt-20 lg:pt-32 pb-16">
-        <div class="container mx-auto px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
-                <div class="max-w-md reveal">
-                    <div class="mb-8">
-                        <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP Logo" class="h-16 w-auto mb-6">
-                    </div>
-                    
-                    <div class="mt-12 lg:mt-16">
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-6">Global Headquarters</span>
-                        <div class="content-card !p-6 lg:!p-8 group cursor-default">
-                            <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
-                                Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
-                                8 Square Zen, Sector-142, Noida,<br>
-                                Uttar Pradesh, India.
-                            </p>
-                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" target="_blank" class="text-[11px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
-                                View on Google Maps <i class="fas fa-location-dot"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                    <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Core</span>
-                        <a href="about-us.html" class="hover:text-blue-600 transition">About Us</a>
-                        <a href="services.html" class="hover:text-blue-600 transition">Our Services</a>
-                        <a href="industries.html" class="hover:text-blue-600 transition">Industries</a>
-                    </div>
-                    <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Company</span>
-                        <a href="brain-behind-avg.html" class="hover:text-blue-600 transition">Leadership</a>
-                        <a href="associates-clientele.html" class="hover:text-blue-600 transition">Associates</a>
-                        <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
-                    </div>
-                    <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Connect</span>
-                        <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
-                        <a href="#" class="hover:text-blue-600 transition">Email Group</a>
-                    </div>
-                </div>
+        <div class="container mx-auto px-6 lg:px-12 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-14 w-auto">
+                <nav class="flex gap-8 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <a href="services.html" class="hover:text-blue-600 transition">Services</a>
+                    <a href="industries.html" class="hover:text-blue-600 transition">Industries</a>
+                    <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
+                </nav>
             </div>
-            
-            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-500 text-[11px] font-bold uppercase tracking-[0.3em] gap-8 text-center md:text-left">
+            <div class="border-t border-slate-100 pt-12 text-slate-400 text-[11px] font-bold uppercase tracking-[0.3em] flex flex-col md:flex-row justify-between gap-4">
                 <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
-                <span class="text-slate-400">ISO 9001:2015 CERTIFIED</span>
+                <span class="text-slate-300">ISO 9001:2015 CERTIFIED</span>
             </div>
         </div>
     </footer>
 
     <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const menuClose = document.getElementById('menu-close');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        });
-
-        menuClose.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-        });
-
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        });
-
+        // Reveal on Scroll Logic
         function initReveal() {
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('active');
-                });
-            }, observerOptions);
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         }
+
+        // Industry Slider Core Logic
+        let currentIdx = 0;
+        let autoSlideTimer;
+        const autoSlideDuration = 5000;
+        const track = document.getElementById('sliderTrack');
+        const dotsCont = document.getElementById('sliderDots');
+        const slides = document.querySelectorAll('.slide-item');
+        
+        function getSteps() {
+            const itemsPerView = window.innerWidth >= 1024 ? 2 : 1;
+            return slides.length - (itemsPerView - 1);
+        }
+
+        function createDots() {
+            dotsCont.innerHTML = '';
+            const steps = getSteps();
+            for (let i = 0; i < steps; i++) {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.addEventListener('click', () => {
+                    currentIdx = i;
+                    updateSlider();
+                    resetAutoSlide();
+                });
+                dotsCont.appendChild(dot);
+            }
+        }
+
+        function updateSlider() {
+            const steps = getSteps();
+            if (currentIdx >= steps) currentIdx = 0;
+            const slideWidth = slides[0].offsetWidth + 32; // width + gap
+            track.style.transform = `translateX(-${currentIdx * slideWidth}px)`;
+            document.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === currentIdx));
+        }
+
+        function next() {
+            const steps = getSteps();
+            currentIdx = (currentIdx + 1) % steps;
+            updateSlider();
+        }
+
+        function startAutoSlide() {
+            autoSlideTimer = setInterval(next, autoSlideDuration);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideTimer);
+            startAutoSlide();
+        }
+
+        document.getElementById('nextSlide').addEventListener('click', () => {
+            next();
+            resetAutoSlide();
+        });
+
+        document.getElementById('prevSlide').addEventListener('click', () => {
+            const steps = getSteps();
+            currentIdx = (currentIdx - 1 + steps) % steps;
+            updateSlider();
+            resetAutoSlide();
+        });
+
+        // Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle?.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+        document.getElementById('menu-close')?.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
 
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
             const progressBar = document.getElementById("progress-bar");
-            if(progressBar) progressBar.style.width = scrolled + "%";
-
+            if(progressBar) progressBar.style.width = (winScroll / height) * 100 + "%";
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 80) {
-                nav.style.padding = '0.8rem 1.5rem';
-                nav.classList.add('shadow-sm');
-            } else {
-                nav.style.padding = '1.25rem 2rem';
-                nav.classList.remove('shadow-sm');
-            }
+            if (window.scrollY > 80) nav.classList.add('shadow-sm'); else nav.classList.remove('shadow-sm');
         });
 
-        window.onload = initReveal;
+        window.onload = () => { 
+            initReveal(); 
+            createDots();
+            updateSlider();
+            startAutoSlide();
+        };
+        
+        window.onresize = () => {
+            createDots();
+            updateSlider();
+        };
     </script>
 </body>
 </html>
