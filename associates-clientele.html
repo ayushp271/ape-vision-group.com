@@ -43,6 +43,7 @@
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            transition: all 0.4s var(--ease-out-expo);
         }
 
         .nav-link {
@@ -71,11 +72,19 @@
         .nav-link:hover::after { width: 100%; }
 
         .ecosystem-card {
-            border-radius: 2.5rem;
-            padding: 3rem;
+            border-radius: 2rem;
+            padding: 2.5rem;
             background: #f8fafc;
             border: 1px solid #f1f5f9;
             transition: all 0.5s var(--ease-out-expo);
+            height: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .ecosystem-card {
+                border-radius: 2.5rem;
+                padding: 3rem;
+            }
         }
 
         .ecosystem-card:hover {
@@ -86,16 +95,23 @@
         }
 
         .project-tag {
-            padding: 12px 24px;
+            padding: 10px 18px;
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 100px;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--brand-navy);
             transition: all 0.3s ease;
+        }
+
+        @media (min-width: 1024px) {
+            .project-tag {
+                padding: 12px 24px;
+                font-size: 10px;
+            }
         }
 
         .project-tag:hover {
@@ -104,13 +120,15 @@
         }
 
         #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: var(--brand-blue);
-            z-index: 1001;
-            width: 0%;
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        #mobile-menu {
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
         }
     </style>
 </head>
@@ -118,54 +136,80 @@
 
     <div id="progress-bar"></div>
 
-    <header class="glass-nav fixed top-0 w-full z-[1000] px-8 py-5">
+    <!-- Navigation -->
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
             <a href="index.html" class="flex flex-col group cursor-pointer">
-                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none">APE VISION GROUP</span>
+                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
                 <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
             </a>
 
             <nav class="hidden xl:flex items-center space-x-10">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About Us</a>
-                <a href="#" class="nav-link">Our Services</a>
-                <a href="#" class="nav-link">Industries</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Our Services</a>
+                <a href="industries.html" class="nav-link">Industries</a>
                 <a href="brain-behind-avg.html" class="nav-link">Brain Behind AVG</a>
                 <a href="associates-clientele.html" class="nav-link text-blue-600">Associates & Clientele</a>
                 <a href="contact.html" class="nav-link">Contact Us</a>
             </nav>
 
-            <button class="xl:hidden text-slate-900 text-xl">
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2">
                 <i class="fas fa-bars-staggered"></i>
             </button>
         </div>
     </header>
 
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
+        <div class="flex justify-between items-center mb-12">
+            <div class="flex flex-col">
+                <span class="text-xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
+                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.3em] mt-1">Visionary Realities</span>
+            </div>
+            <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-6">
+            <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Home</a>
+            <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
+            <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
+            <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter">Industries</a>
+            <a href="brain-behind-avg.html" class="text-3xl font-black uppercase tracking-tighter">Leadership</a>
+            <a href="associates-clientele.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Associates</a>
+            <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
+        </nav>
+        <div class="mt-auto border-t pt-8">
+            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
+        </div>
+    </div>
+
     <main>
-        <section class="pt-40 pb-20 bg-white">
-            <div class="container mx-auto px-8">
+        <!-- Hero Section -->
+        <section class="pt-32 lg:pt-48 pb-16 lg:pb-24 bg-white">
+            <div class="container mx-auto px-6 lg:px-8">
                 <div class="reveal">
                     <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Network</span>
-                    <h1 class="text-6xl md:text-[9rem] font-black uppercase tracking-tighter leading-[0.85] mb-24">Associates & <br/>Clientele.</h1>
+                    <h1 class="text-4xl lg:text-[9rem] font-black uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] mb-12 lg:mb-24">Associates & <br/>Clientele.</h1>
                 </div>
 
-                <div class="grid lg:grid-cols-2 gap-20 items-end reveal stagger-1">
-                    <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-slate-950">Trusted Partnerships. <br/><span class="text-blue-600 italic font-light">Proven Delivery.</span></h2>
-                    <p class="text-xl text-slate-500 font-light leading-relaxed">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-end reveal stagger-1">
+                    <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tight text-slate-950">Trusted Partnerships. <br/><span class="text-blue-600 italic font-light">Proven Delivery.</span></h2>
+                    <p class="text-lg lg:text-xl text-slate-500 font-light leading-relaxed">
                         We work with a strong ecosystem of engineering consultants, OEMs, EPC contractors, and strategic partners to deliver complex infrastructure projects across energy and industrial sectors.
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="py-32 bg-slate-50">
-            <div class="container mx-auto px-8">
-                <div class="grid lg:grid-cols-3 gap-12">
+        <!-- Partner Tier Grid -->
+        <section class="py-16 lg:py-32 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-3 gap-6 lg:gap-12">
                     <!-- Detail Engineering -->
                     <div class="ecosystem-card reveal">
                         <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest block mb-6">Partner Tier 01</span>
-                        <h3 class="text-2xl font-black uppercase tracking-tight mb-8">Detail Engineering Associates</h3>
-                        <p class="text-slate-500 font-light leading-relaxed mb-8">
+                        <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight mb-8">Detail Engineering Associates</h3>
+                        <p class="text-slate-500 font-light text-sm lg:text-base leading-relaxed mb-8">
                             Experienced firms supporting multi-discipline design (Civil, Mech, Electrical, C&I) for large-scale energy infrastructure projects.
                         </p>
                         <div class="flex flex-wrap gap-2">
@@ -178,8 +222,8 @@
                     <!-- Tech & OEM -->
                     <div class="ecosystem-card reveal stagger-1">
                         <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest block mb-6">Partner Tier 02</span>
-                        <h3 class="text-2xl font-black uppercase tracking-tight mb-8">Technology & OEM Associates</h3>
-                        <p class="text-slate-500 font-light leading-relaxed mb-8">
+                        <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight mb-8">Technology & OEM Associates</h3>
+                        <p class="text-slate-500 font-light text-sm lg:text-base leading-relaxed mb-8">
                             Equipment integration for mission-critical systems including BESS, SCADA, EMS, HVAC, and Power Distribution.
                         </p>
                         <div class="flex flex-wrap gap-2">
@@ -192,8 +236,8 @@
                     <!-- EPC Partners -->
                     <div class="ecosystem-card reveal stagger-2">
                         <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest block mb-6">Partner Tier 03</span>
-                        <h3 class="text-2xl font-black uppercase tracking-tight mb-8">EPC & Execution Partners</h3>
-                        <p class="text-slate-500 font-light leading-relaxed mb-8">
+                        <h3 class="text-xl lg:text-2xl font-black uppercase tracking-tight mb-8">EPC & Execution Partners</h3>
+                        <p class="text-slate-500 font-light text-sm lg:text-base leading-relaxed mb-8">
                             Disciplined on-ground delivery capability for civil structures, mechanical erection, and electrical installation.
                         </p>
                         <div class="flex flex-wrap gap-2">
@@ -206,41 +250,42 @@
             </div>
         </section>
 
-        <section class="py-40 bg-slate-950 text-white">
-            <div class="container mx-auto px-8">
-                <div class="grid lg:grid-cols-12 gap-24 items-start">
+        <!-- Client Sectors -->
+        <section class="py-24 lg:py-40 bg-slate-950 text-white">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-start">
                     <div class="lg:col-span-5 reveal">
                         <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Our Reach</span>
-                        <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-12">Client <br/>Sectors.</h2>
-                        <p class="text-slate-400 text-xl font-light leading-relaxed">
+                        <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-8 lg:mb-12">Client <br/>Sectors.</h2>
+                        <p class="text-slate-400 text-lg lg:text-xl font-light leading-relaxed">
                             Our network enables faster execution, stronger technical support, and reliable project outcomes for a global client base.
                         </p>
                     </div>
                     
                     <div class="lg:col-span-7">
-                        <div class="grid md:grid-cols-2 gap-x-12 gap-y-16 reveal stagger-1">
-                            <div class="border-l-4 border-blue-600 pl-8">
-                                <h4 class="text-lg font-black uppercase tracking-tight mb-4">Renewable & IPPs</h4>
+                        <div class="grid sm:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-12 lg:gap-y-16 reveal stagger-1">
+                            <div class="border-l-4 border-blue-600 pl-6 lg:pl-8">
+                                <h4 class="text-base lg:text-lg font-black uppercase tracking-tight mb-4">Renewable & IPPs</h4>
                                 <p class="text-slate-500 text-sm font-light">Supporting developers in energy transition and storage integration.</p>
                             </div>
-                            <div class="border-l-4 border-slate-800 pl-8">
-                                <h4 class="text-lg font-black uppercase tracking-tight mb-4">Power Gen Cos</h4>
+                            <div class="border-l-4 border-slate-800 pl-6 lg:pl-8">
+                                <h4 class="text-base lg:text-lg font-black uppercase tracking-tight mb-4">Power Gen Cos</h4>
                                 <p class="text-slate-500 text-sm font-light">Thermal, Gas, and Hydro generation utility support.</p>
                             </div>
-                            <div class="border-l-4 border-slate-800 pl-8">
-                                <h4 class="text-lg font-black uppercase tracking-tight mb-4">Data Centres</h4>
+                            <div class="border-l-4 border-slate-800 pl-6 lg:pl-8">
+                                <h4 class="text-base lg:text-lg font-black uppercase tracking-tight mb-4">Data Centres</h4>
                                 <p class="text-slate-500 text-sm font-light">Hyperscale and Colocation infrastructure operators.</p>
                             </div>
-                            <div class="border-l-4 border-slate-800 pl-8">
-                                <h4 class="text-lg font-black uppercase tracking-tight mb-4">Industrial Giants</h4>
+                            <div class="border-l-4 border-slate-800 pl-6 lg:pl-8">
+                                <h4 class="text-base lg:text-lg font-black uppercase tracking-tight mb-4">Industrial Giants</h4>
                                 <p class="text-slate-500 text-sm font-light">Steel, Cement, and Heavy industries with complex utility needs.</p>
                             </div>
-                            <div class="border-l-4 border-slate-800 pl-8">
-                                <h4 class="text-lg font-black uppercase tracking-tight mb-4">Petrochemical</h4>
+                            <div class="border-l-4 border-slate-800 pl-6 lg:pl-8">
+                                <h4 class="text-base lg:text-lg font-black uppercase tracking-tight mb-4">Petrochemical</h4>
                                 <p class="text-slate-500 text-sm font-light">Refinery and Oil & Gas infrastructure firms.</p>
                             </div>
-                            <div class="border-l-4 border-slate-800 pl-8">
-                                <h4 class="text-lg font-black uppercase tracking-tight mb-4">Govt Agencies</h4>
+                            <div class="border-l-4 border-slate-800 pl-6 lg:pl-8">
+                                <h4 class="text-base lg:text-lg font-black uppercase tracking-tight mb-4">Govt Agencies</h4>
                                 <p class="text-slate-500 text-sm font-light">Strategic infrastructure and public utility development bodies.</p>
                             </div>
                         </div>
@@ -249,14 +294,15 @@
             </div>
         </section>
 
-        <section class="py-40 bg-white">
-            <div class="container mx-auto px-8">
-                <div class="text-center mb-24 reveal">
+        <!-- Project Track Record -->
+        <section class="py-24 lg:py-40 bg-white">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="text-center mb-16 lg:mb-24 reveal">
                     <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Track Record</span>
-                    <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter">Representative Project Exposure</h2>
+                    <h2 class="text-3xl lg:text-6xl font-black uppercase tracking-tighter">Representative Project Exposure</h2>
                 </div>
 
-                <div class="flex flex-wrap justify-center gap-4 reveal stagger-1">
+                <div class="flex flex-wrap justify-center gap-3 lg:gap-4 reveal stagger-1">
                     <span class="project-tag">Combined Cycle Power Plants (CCPP)</span>
                     <span class="project-tag">FGD and emission control systems</span>
                     <span class="project-tag">Thermal power plant infrastructure</span>
@@ -267,21 +313,22 @@
                     <span class="project-tag">Overseas industrial engineering</span>
                 </div>
                 
-                <div class="mt-20 text-center reveal stagger-2">
-                    <p class="text-slate-400 text-sm italic">Detailed project references are available upon request.</p>
+                <div class="mt-16 lg:mt-20 text-center reveal stagger-2">
+                    <p class="text-slate-400 text-xs lg:text-sm italic">Detailed project references are available upon request.</p>
                 </div>
             </div>
         </section>
 
-        <section class="py-32 bg-slate-50 text-center">
-            <div class="container mx-auto px-8">
+        <!-- CTA Section -->
+        <section class="py-20 lg:py-32 bg-slate-50 text-center">
+            <div class="container mx-auto px-6 lg:px-8">
                 <div class="reveal">
-                    <h3 class="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-12">Partner With Us on <br/>Your Next Project</h3>
-                    <div class="flex flex-wrap justify-center gap-6">
-                        <a href="mailto:info@apevisiongroup.com" class="inline-flex items-center gap-4 bg-blue-600 text-white px-12 py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
+                    <h3 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter mb-10 lg:mb-12 leading-tight">Partner With Us on <br class="hidden md:block"/>Your Next Project</h3>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4 lg:gap-6">
+                        <a href="mailto:info@apevisiongroup.com" class="inline-flex items-center gap-4 bg-blue-600 text-white px-10 lg:px-12 py-5 lg:py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform duration-500 shadow-2xl shadow-blue-500/20">
                             Talk to Our Team <i class="fas fa-comments"></i>
                         </a>
-                        <a href="#" class="inline-flex items-center gap-4 bg-white border border-slate-200 text-slate-900 px-12 py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-colors">
+                        <a href="#" class="inline-flex items-center gap-4 bg-white border border-slate-200 text-slate-900 px-10 lg:px-12 py-5 lg:py-6 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-50 transition-colors">
                             Request a Proposal <i class="fas fa-file-pdf"></i>
                         </a>
                     </div>
@@ -290,16 +337,17 @@
         </section>
     </main>
 
-    <footer class="bg-white border-t border-slate-100 pt-32 pb-16">
-        <div class="container mx-auto px-8">
-            <div class="flex flex-col lg:flex-row justify-between gap-24 mb-32">
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 pt-20 lg:pt-32 pb-16">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
                 <div class="max-w-md reveal">
                     <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-6">Visionary Realities</p>
+                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-4 lg:mt-6">Visionary Realities</p>
                     
-                    <div class="mt-16">
+                    <div class="mt-12 lg:mt-16">
                         <span class="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-6">Global Headquarters</span>
-                        <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100">
+                        <div class="p-6 lg:p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
                             <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
                                 Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
                                 8 Square Zen, Sector-142, Noida,<br>
@@ -313,7 +361,7 @@
                     </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[9px] font-black uppercase tracking-widest text-slate-400">
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
                         <a href="index.html" class="hover:text-blue-600 transition">Home</a>
@@ -322,9 +370,9 @@
                     </div>
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Company</span>
-                        <a href="brain-behind-avg.html" class="hover:text-blue-600 transition">Brain Behind AVG</a>
+                        <a href="brain-behind-avg.html">Brain Behind AVG</a>
                         <a href="associates-clientele.html" class="text-blue-600">Associates</a>
-                        <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                     <div class="flex flex-col space-y-5">
                         <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Social</span>
@@ -334,13 +382,34 @@
                 </div>
             </div>
             
-            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] gap-8">
+            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] gap-8 text-center">
                 <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
             </div>
         </div>
     </footer>
 
     <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
         function initReveal() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -354,7 +423,15 @@
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById("progress-bar").style.width = scrolled + "%";
+            const bar = document.getElementById("progress-bar");
+            if(bar) bar.style.width = scrolled + "%";
+
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.style.padding = '0.8rem 1.5rem';
+            } else {
+                nav.style.padding = '1.25rem 2rem';
+            }
         });
 
         window.onload = initReveal;
