@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Power Plants (BOP) | APE VISION GROUP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #0a0f1d;
+            --brand-blue: #2563eb;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--brand-blue); }
+
+        /* Hero Refinement - Ensuring spacing doesn't look cramped */
+        .hero-section {
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.6) 60%, transparent 100%);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+            height: 100%;
+        }
+
+        .content-card:hover {
+            border-color: var(--brand-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.12);
+        }
+
+        .badge-outline {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 8px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+        
+        .badge-outline:hover {
+            border-color: var(--brand-blue);
+            color: #fff;
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .brand-logo { height: 52px; width: auto; object-fit: contain; }
+        
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--brand-blue);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        #mobile-menu {
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateX(100%);
+        }
+        #mobile-menu.open { transform: translateX(0); }
+
+        .btn-action {
+            padding: 1.25rem 2.5rem;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.4s var(--ease-out-expo);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-12 py-4" id="navbar">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
+            </a>
+            <nav class="hidden xl:flex items-center space-x-10">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Our Services</a>
+                <a href="industries.html" class="nav-link">Industries</a>
+                <a href="brain-behind-avg.html" class="nav-link">Leadership</a>
+                <a href="associates-clientele.html" class="nav-link">Associates</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl"><i class="fas fa-bars-staggered"></i></button>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
+        <div class="flex justify-between items-center mb-12">
+            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-10 w-auto">
+            <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="flex flex-col space-y-8">
+            <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Home</a>
+            <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
+            <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
+            <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Industries</a>
+            <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter">Contact</a>
+        </nav>
+    </div>
+
+    <main>
+        <!-- Hero Section Overhaul -->
+        <section class="hero-section overflow-hidden bg-slate-950">
+            <img src="https://lh3.googleusercontent.com/d/1SY8ASGkJMyRMJOJc-8kIDDDI7zuWfdQN" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80" alt="Thermal Power Plant">
+            <div class="absolute inset-0 hero-overlay"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="max-w-4xl reveal">
+                    <span class="section-label !text-blue-400">Industry Sector 01</span>
+                    
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.05] mb-8">
+                        Conventional <br/>
+                        <span class="text-blue-600 italic font-light">Thermal Power</span><br/>
+                        Infrastructure (BOP).
+                    </h1>
+                    
+                    <p class="text-lg lg:text-xl text-slate-300 font-light leading-relaxed max-w-2xl mb-10">
+                        End-to-end project delivery and coordination for Balance of Plant (BOP) systems—ensuring safe execution, quality compliance, and schedule control.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-16">
+                        <span class="badge-outline">Utility Power</span>
+                        <span class="badge-outline">Captive Plants</span>
+                        <span class="badge-outline">Steam Systems</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="contact.html" class="btn-action bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 shadow-xl shadow-blue-600/20">
+                            Request a Proposal <i class="fas fa-file-invoice ml-3"></i>
+                        </a>
+                        <a href="contact.html" class="btn-action border border-white/20 text-white hover:bg-white/10 backdrop-blur-md">
+                            Schedule a Call <i class="fas fa-calendar-alt ml-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Offerings -->
+        <section class="py-24 lg:py-40 bg-white">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                    <div class="lg:col-span-4 reveal">
+                        <span class="section-label">Core Offerings</span>
+                        <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-8 leading-tight">What <br/>We Do.</h2>
+                        <p class="text-slate-500 mb-10 font-medium">AVG provides single-point responsibility for the complex coordination required in thermal power development.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> BOP Engineering & Execution</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Civil & structural Works</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Mechanical Installation</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Electrical & Distribution</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Owner's Engineer Services</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Commissioning Support</li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-8">
+                        <span class="section-label lg:text-right">Technical Capability Matrix</span>
+                        <div class="grid md:grid-cols-2 gap-6 reveal stagger-1">
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Plant Infrastructure</h4>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Civil foundations, heavy structural works, and plant infrastructure designed for seismic and load stability.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Thermal Cycle Support</h4>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Cooling water systems, raw water treatment, and DM plant coordination for high-purity cycle feed.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Handling Logic</h4>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Comprehensive Ash and Fuel handling systems integration for uninterrupted power block feeding.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Distribution & Grid</h4>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Electrical switchyards, plant distribution networks, and lighting/earthing systems to utility standards.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Auxiliary Piping</h4>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Flue gas ducting interface support, compressed air networks, and firefighting safety infrastructure.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Building Services</h4>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">HVAC systems and essential building services for control rooms and critical technical zones.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compliance & Quality Section -->
+        <section class="py-24 lg:py-40 bg-slate-900 text-white">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+                    <div class="reveal">
+                        <span class="section-label !text-blue-500">Standards & Compliance</span>
+                        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-10 leading-none">Quality <br/>Control.</h2>
+                        <div class="space-y-6 text-slate-400 font-normal text-lg leading-relaxed">
+                            <p>Our practices are ISO-aligned, strictly following statutory site safety regulations and fabrication standards.</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-5 border border-white/10 rounded-2xl">
+                                    <span class="text-blue-500 font-black uppercase text-[10px] block mb-1">ISO 9001:2015</span>
+                                    <span class="text-xs">Quality Management</span>
+                                </div>
+                                <div class="p-5 border border-white/10 rounded-2xl">
+                                    <span class="text-blue-500 font-black uppercase text-[10px] block mb-1">HSE Standards</span>
+                                    <span class="text-xs">Zero Incident Culture</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal stagger-1 space-y-6">
+                        <div class="p-8 border border-white/10 rounded-3xl hover:bg-white/5 transition-all">
+                            <p class="text-sm lg:text-base font-medium text-slate-200">Welding, fabrication, and detailed inspection documentation support for all mechanical lots.</p>
+                        </div>
+                        <div class="p-8 border border-white/10 rounded-3xl hover:bg-white/5 transition-all">
+                            <p class="text-sm lg:text-base font-medium text-slate-200">Rigorous electrical testing and site commissioning protocols to ensure rapid grid synchronization.</p>
+                        </div>
+                        <div class="p-8 border border-white/10 rounded-3xl hover:bg-white/5 transition-all">
+                            <p class="text-sm lg:text-base font-medium text-slate-200">Comprehensive as-built documentation and full handover package preparation for long-term ops.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-white border-t border-slate-100 py-20">
+        <div class="container mx-auto px-6 lg:px-12 text-center md:text-left">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-14 w-auto">
+                <nav class="flex gap-8 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    <a href="services.html" class="hover:text-blue-600 transition">Services</a>
+                    <a href="industries.html" class="hover:text-blue-600 transition">Industries</a>
+                    <a href="contact.html" class="hover:text-blue-600 transition">Contact</a>
+                </nav>
+            </div>
+            <div class="border-t border-slate-100 pt-12 text-slate-400 text-[11px] font-bold uppercase tracking-[0.3em] flex flex-col md:flex-row justify-between gap-4">
+                <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
+                <span class="text-slate-300">ISO 9001:2015 CERTIFIED</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle?.addEventListener('click', () => { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; });
+        menuClose?.addEventListener('click', () => { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; });
+
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById("progress-bar");
+            if(bar) bar.style.width = scrolled + "%";
+
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.style.padding = '0.75rem 3rem';
+            } else {
+                nav.style.padding = '1rem 3rem';
+            }
+        });
+
+        window.onload = initReveal;
+    </script>
+</body>
+</html>
