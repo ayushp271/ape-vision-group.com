@@ -21,6 +21,7 @@
             color: var(--brand-navy);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
         }
 
         .reveal {
@@ -39,24 +40,24 @@
         .stagger-2 { transition-delay: 0.2s; }
 
         .glass-nav {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.90);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            transition: all 0.4s var(--ease-out-expo);
+            transition: all 0.5s var(--ease-out-expo);
         }
 
         .nav-link {
-            font-size: 8.5px;
-            font-weight: 800;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
-            color: #64748b;
+            letter-spacing: 0.15em;
+            color: #475569;
             position: relative;
             transition: color 0.3s ease;
         }
 
-        .nav-link:hover { color: var(--brand-blue); }
+        .nav-link:hover, .nav-active { color: var(--brand-blue); }
         
         .nav-link::after {
             content: '';
@@ -77,9 +78,10 @@
             padding: 1.25rem 1.5rem;
             border-radius: 1.25rem;
             width: 100%;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: all 0.4s var(--ease-out-expo);
             outline: none;
+            color: var(--brand-navy);
         }
 
         @media (min-width: 1024px) {
@@ -126,6 +128,7 @@
         .contact-pill:hover {
             border-color: var(--brand-blue);
             background: #ffffff;
+            transform: translateY(-5px);
         }
 
         #progress-bar {
@@ -139,6 +142,13 @@
         #mobile-menu.open {
             transform: translateX(0);
         }
+
+        .brand-logo {
+            height: 54px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.4s var(--ease-out-expo);
+        }
     </style>
 </head>
 <body>
@@ -148,9 +158,8 @@
     <!-- Navigation -->
     <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-8 py-4 lg:py-5" id="navbar">
         <div class="max-w-[1920px] mx-auto flex items-center justify-between">
-            <a href="index.html" class="flex flex-col group cursor-pointer">
-                <span class="text-xl lg:text-2xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.4em] mt-1.5">Visionary Realities</span>
+            <a href="index.html" class="flex items-center group cursor-pointer">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
             </a>
 
             <nav class="hidden xl:flex items-center space-x-10">
@@ -160,7 +169,7 @@
                 <a href="industries.html" class="nav-link">Industries</a>
                 <a href="brain-behind-avg.html" class="nav-link">Brain Behind AVG</a>
                 <a href="associates-clientele.html" class="nav-link">Associates & Clientele</a>
-                <a href="contact.html" class="nav-link text-blue-600">Contact Us</a>
+                <a href="contact.html" class="nav-link nav-active">Contact Us</a>
             </nav>
 
             <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl p-2">
@@ -172,23 +181,19 @@
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-8 xl:hidden">
         <div class="flex justify-between items-center mb-12">
-            <div class="flex flex-col">
-                <span class="text-xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                <span class="text-[8px] font-bold text-blue-600 uppercase tracking-[0.3em] mt-1">Visionary Realities</span>
-            </div>
+            <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto">
             <button id="menu-close" class="text-2xl text-slate-900"><i class="fas fa-times"></i></button>
         </div>
-        <nav class="flex flex-col space-y-6">
+        <nav class="flex flex-col space-y-8">
             <a href="index.html" class="text-3xl font-black uppercase tracking-tighter">Home</a>
             <a href="about-us.html" class="text-3xl font-black uppercase tracking-tighter">About Us</a>
             <a href="services.html" class="text-3xl font-black uppercase tracking-tighter">Our Services</a>
             <a href="industries.html" class="text-3xl font-black uppercase tracking-tighter">Industries</a>
             <a href="brain-behind-avg.html" class="text-3xl font-black uppercase tracking-tighter">Leadership</a>
-            <a href="associates-clientele.html" class="text-3xl font-black uppercase tracking-tighter">Associates</a>
             <a href="contact.html" class="text-3xl font-black uppercase tracking-tighter text-blue-600">Contact</a>
         </nav>
         <div class="mt-auto border-t pt-8">
-            <p class="text-[9px] font-black uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-400">&copy; 2026 APE VISION GROUP</p>
         </div>
     </div>
 
@@ -197,9 +202,9 @@
         <section class="pt-32 lg:pt-48 pb-16 lg:pb-24 bg-white overflow-hidden">
             <div class="container mx-auto px-6 lg:px-8">
                 <div class="max-w-4xl reveal">
-                    <span class="text-blue-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 block">Get In Touch</span>
+                    <span class="text-blue-600 text-[11px] font-black uppercase tracking-[0.4em] mb-6 block">Get In Touch</span>
                     <h1 class="text-4xl lg:text-[8rem] font-black uppercase tracking-tighter leading-[0.9] lg:leading-[0.85] mb-8 lg:mb-12">Partner <br/>With Us.</h1>
-                    <p class="text-xl lg:text-2xl text-slate-500 font-light leading-relaxed max-w-2xl">
+                    <p class="text-xl lg:text-2xl text-slate-600 font-normal leading-relaxed max-w-2xl">
                         Whether you are planning a renewable, industrial, or mission-critical infrastructure project, our team ensures disciplined delivery and strong execution outcomes.
                     </p>
                 </div>
@@ -217,16 +222,16 @@
                             <form class="space-y-6 lg:space-y-8">
                                 <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
                                     <div>
-                                        <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Full Name</label>
+                                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Full Name</label>
                                         <input type="text" placeholder="e.g. John Doe" class="input-premium">
                                     </div>
                                     <div>
-                                        <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Email Address</label>
+                                        <label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Email Address</label>
                                         <input type="email" placeholder="e.g. john@company.com" class="input-premium">
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Subject / Industry</label>
+                                    <label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Subject / Industry</label>
                                     <select class="input-premium appearance-none">
                                         <option>Renewable Energy & BESS</option>
                                         <option>Thermal Power (BOP)</option>
@@ -236,10 +241,10 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="text-[9px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Project Brief</label>
+                                    <label class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-3 lg:mb-4 block">Project Brief</label>
                                     <textarea rows="4" placeholder="Tell us about your project requirements..." class="input-premium"></textarea>
                                 </div>
-                                <button type="button" class="btn-fluid w-full bg-blue-600 text-white py-6 lg:py-8 text-[10px] lg:text-[11px] font-black uppercase tracking-[0.3em]">
+                                <button type="button" class="btn-fluid w-full bg-blue-600 text-white py-6 lg:py-8 text-xs font-black uppercase tracking-[0.2em]">
                                     Send Proposal Request <i class="fas fa-paper-plane ml-3"></i>
                                 </button>
                             </form>
@@ -249,27 +254,27 @@
                     <!-- Details Column -->
                     <div class="lg:col-span-5 space-y-8 lg:space-y-12 reveal stagger-2">
                         <div class="contact-pill">
-                            <span class="text-blue-600 text-[9px] font-black uppercase tracking-widest mb-6 block">Email Engagement</span>
-                            <h4 class="text-xl lg:text-2xl font-black uppercase mb-4">Strategic Inquiry</h4>
-                            <a href="mailto:info@apevisiongroup.com" class="text-lg lg:text-xl text-slate-500 font-light hover:text-blue-600 transition truncate block">info@apevisiongroup.com</a>
+                            <span class="text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6 block">Email Engagement</span>
+                            <h4 class="text-xl lg:text-2xl font-black uppercase mb-4 tracking-tight">Strategic Inquiry</h4>
+                            <a href="mailto:info@apevisiongroup.com" class="text-lg lg:text-xl text-slate-600 font-normal hover:text-blue-600 transition truncate block">info@apevisiongroup.com</a>
                         </div>
 
                         <div class="contact-pill">
-                            <span class="text-blue-600 text-[9px] font-black uppercase tracking-widest mb-6 block">Our Location</span>
-                            <h4 class="text-xl lg:text-2xl font-black uppercase mb-6">Noida Headquarters</h4>
-                            <p class="text-slate-500 font-light text-sm lg:text-base leading-relaxed mb-8">
+                            <span class="text-blue-600 text-[11px] font-black uppercase tracking-widest mb-6 block">Our Location</span>
+                            <h4 class="text-xl lg:text-2xl font-black uppercase mb-6 tracking-tight">Noida Headquarters</h4>
+                            <p class="text-slate-600 font-normal text-sm lg:text-base leading-relaxed mb-8">
                                 Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
                                 8 Square Zen, Sector-142, Noida,<br>
                                 Uttar Pradesh, India.
                             </p>
                             <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" 
-                               target="_blank" class="inline-flex items-center gap-3 text-[10px] font-black text-blue-600 uppercase tracking-widest group">
+                               target="_blank" class="inline-flex items-center gap-3 text-[11px] font-black text-blue-600 uppercase tracking-widest group">
                                 Open in Google Maps <i class="fas fa-location-dot transition-transform group-hover:translate-x-2"></i>
                             </a>
                         </div>
 
                         <div class="p-8 lg:p-12">
-                            <h5 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-8">Follow Our Vision</h5>
+                            <h5 class="text-[11px] font-black uppercase tracking-widest text-slate-400 mb-8">Follow Our Vision</h5>
                             <div class="flex gap-8 lg:gap-10">
                                 <a href="https://www.linkedin.com/company/ape-vision-llp/posts/?feedView=all" target="_blank" class="text-2xl text-slate-300 hover:text-blue-600 transition"><i class="fab fa-linkedin"></i></a>
                                 <a href="#" class="text-2xl text-slate-300 hover:text-blue-600 transition"><i class="fab fa-twitter"></i></a>
@@ -288,34 +293,47 @@
         <div class="container mx-auto px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row justify-between gap-16 lg:gap-24 mb-20 lg:mb-32">
                 <div class="max-w-md reveal">
-                    <span class="text-3xl font-black tracking-tighter uppercase leading-none text-slate-950">APE VISION GROUP</span>
-                    <p class="text-blue-600 text-[10px] font-bold uppercase tracking-[0.4em] mt-4 lg:mt-6">Visionary Realities</p>
+                    <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP Logo" class="h-16 w-auto mb-6">
+                    
+                    <div class="mt-12 lg:mt-16">
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 block mb-6">Global Headquarters</span>
+                        <div class="p-6 lg:p-8 rounded-[2rem] bg-slate-50 border border-slate-100">
+                            <p class="text-sm font-semibold text-slate-700 leading-relaxed mb-6">
+                                Cabin no. 7 & 15, Awfis, Plot No.-9,<br>
+                                8 Square Zen, Sector-142, Noida,<br>
+                                Uttar Pradesh, India.
+                            </p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=Awfis+Plot+No-9+8+Square+Zen+Sector-142+Noida" 
+                               target="_blank" class="text-[11px] font-black text-blue-600 uppercase tracking-widest flex items-center gap-3">
+                                View on Google Maps <i class="fas fa-location-dot"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-16 text-[9px] font-black uppercase tracking-widest text-slate-400">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-12 lg:gap-20 text-[11px] font-bold uppercase tracking-wider text-slate-500 reveal stagger-1">
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Core</span>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Core</span>
                         <a href="index.html" class="hover:text-blue-600 transition">Home</a>
                         <a href="about-us.html" class="hover:text-blue-600 transition">About Us</a>
                         <a href="services.html" class="hover:text-blue-600 transition">Services</a>
                     </div>
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Company</span>
-                        <a href="brain-behind-avg.html">Brain Behind AVG</a>
-                        <a href="associates-clientele.html">Associates</a>
-                        <a href="contact.html" class="text-blue-600">Contact</a>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Company</span>
+                        <a href="brain-behind-avg.html" class="hover:text-blue-600 transition">Brain Behind AVG</a>
+                        <a href="associates-clientele.html" class="hover:text-blue-600 transition">Associates</a>
+                        <a href="contact.html" class="text-blue-600 font-black">Contact</a>
                     </div>
                     <div class="flex flex-col space-y-5">
-                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase">Connect</span>
+                        <span class="text-slate-900 border-b border-slate-100 pb-5 uppercase font-black tracking-[0.1em]">Connect</span>
                         <a href="https://www.linkedin.com/company/ape-vision-llp/posts/?feedView=all" class="hover:text-blue-600 transition">LinkedIn</a>
                         <a href="#" class="hover:text-blue-600 transition">Email Group</a>
                     </div>
                 </div>
             </div>
             
-            <div class="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center text-slate-400 text-[9px] font-black uppercase tracking-[0.5em] gap-8 text-center">
-                <span>&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</span>
-                <span class="text-slate-300">ISO 9001:2015 CERTIFIED</span>
+            <div class="border-t border-slate-100 pt-12 text-slate-500 text-[11px] font-bold uppercase tracking-[0.3em] text-center md:text-left">
+                &copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.
             </div>
         </div>
     </footer>
@@ -361,8 +379,10 @@
             const nav = document.getElementById('navbar');
             if (window.scrollY > 80) {
                 nav.style.padding = '0.8rem 1.5rem';
+                nav.classList.add('shadow-sm');
             } else {
                 nav.style.padding = '1.25rem 2rem';
+                nav.classList.remove('shadow-sm');
             }
         });
 
