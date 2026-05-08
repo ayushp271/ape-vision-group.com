@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMC Services | APE VISION GROUP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #0a0f1d;
+            --brand-blue: #2563eb;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--brand-blue); }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 100px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.7) 60%, transparent 100%);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-card:hover {
+            border-color: var(--brand-blue);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.1);
+        }
+
+        .user-tag {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 8px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-logo { height: 52px; width: auto; object-fit: contain; }
+        
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--brand-blue);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .btn-action {
+            padding: 1.25rem 2.5rem;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.4s var(--ease-out-expo);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-12 py-4" id="navbar">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
+            </a>
+            <nav class="hidden xl:flex items-center space-x-10">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Our Services</a>
+                <a href="industries.html" class="nav-link">Industries</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section overflow-hidden bg-slate-950">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80" alt="Project Management Consultancy">
+            <div class="absolute inset-0 hero-overlay"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="max-w-4xl reveal">
+                    <span class="section-label !text-blue-400">Service 06</span>
+                    
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.05] mb-8">
+                        Project Management <br/>
+                        <span class="text-blue-600 italic font-light">Consultancy (PMC).</span>
+                    </h1>
+                    
+                    <p class="text-xl lg:text-2xl text-white font-bold mb-6">
+                        Structured Governance for Time, Cost, Quality & Safety.
+                    </p>
+
+                    <p class="text-lg lg:text-xl text-slate-300 font-light leading-relaxed max-w-2xl mb-10">
+                        We provide PMC services to ensure project delivery control across planning, coordination, reporting, and execution monitoring.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-12">
+                        <span class="user-tag">Project Owners</span>
+                        <span class="user-tag">Developers</span>
+                        <span class="user-tag">Investors</span>
+                        <span class="user-tag">Data Centre Operators</span>
+                        <span class="user-tag">Industrial Clients</span>
+                    </div>
+
+                    <a href="contact.html" class="btn-action bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 shadow-xl shadow-blue-600/20 text-center">
+                        Request a Proposal <i class="fas fa-file-invoice ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PMC Scope Section -->
+        <section class="py-24 lg:py-40 bg-white">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-12 gap-16 lg:gap-24">
+                    <div class="lg:col-span-5 reveal">
+                        <span class="section-label">Governance Scope</span>
+                        <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-10 leading-none">Delivery <br/>Control.</h2>
+                        <div class="space-y-1">
+                            <div class="group flex items-center justify-between p-5 border-b border-slate-100 hover:bg-slate-50 transition-all cursor-default rounded-xl">
+                                <span class="text-slate-700 font-bold uppercase text-[12px] tracking-wide">Project planning & scheduling</span>
+                            </div>
+                            <div class="group flex items-center justify-between p-5 border-b border-slate-100 hover:bg-slate-50 transition-all cursor-default rounded-xl">
+                                <span class="text-slate-700 font-bold uppercase text-[12px] tracking-wide">Budgeting & cost control</span>
+                            </div>
+                            <div class="group flex items-center justify-between p-5 border-b border-slate-100 hover:bg-slate-50 transition-all cursor-default rounded-xl">
+                                <span class="text-slate-700 font-bold uppercase text-[12px] tracking-wide">EPC & contractor coordination</span>
+                            </div>
+                            <div class="group flex items-center justify-between p-5 border-b border-slate-100 hover:bg-slate-50 transition-all cursor-default rounded-xl">
+                                <span class="text-slate-700 font-bold uppercase text-[12px] tracking-wide">Procurement monitoring & expediting</span>
+                            </div>
+                            <div class="group flex items-center justify-between p-5 border-b border-slate-100 hover:bg-slate-50 transition-all cursor-default rounded-xl">
+                                <span class="text-slate-700 font-bold uppercase text-[12px] tracking-wide">QA/QC & HSE implementation</span>
+                            </div>
+                            <div class="group flex items-center justify-between p-5 border-b border-slate-100 hover:bg-slate-50 transition-all cursor-default rounded-xl">
+                                <span class="text-slate-700 font-bold uppercase text-[12px] tracking-wide">Commissioning & handover support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 reveal stagger-1">
+                        <div class="bg-slate-50 p-8 lg:p-12 rounded-[2.5rem] border border-slate-100 h-full">
+                            <span class="section-header font-black uppercase text-blue-600 text-xs tracking-widest block mb-8">Key Deliverables</span>
+                            <div class="grid sm:grid-cols-2 gap-x-8 gap-y-10 text-[13px] font-bold text-slate-700 uppercase tracking-wider">
+                                <div class="space-y-1">
+                                    <p class="text-blue-600 font-black">Execution Plan</p>
+                                    <p class="text-slate-500 text-[11px] font-medium normal-case tracking-normal">Comprehensive strategy including baseline milestone schedules.</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-blue-600 font-black">Progress Dashboards</p>
+                                    <p class="text-slate-500 text-[11px] font-medium normal-case tracking-normal">Weekly and monthly high-fidelity progress reporting and risk tracking.</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-blue-600 font-black">Action Trackers</p>
+                                    <p class="text-slate-500 text-[11px] font-medium normal-case tracking-normal">Disciplined coordination logs for contractors and technical lot owners.</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-blue-600 font-black">Compliance Packages</p>
+                                    <p class="text-slate-500 text-[11px] font-medium normal-case tracking-normal">Final quality audits, safety reports, and commissioning documentation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engagement Model Section -->
+        <section class="py-24 lg:py-40 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+                    <div class="reveal">
+                        <span class="section-label">Operational Framework</span>
+                        <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-10">Engagement <br/>Model.</h2>
+                        <p class="text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-10">
+                            Our PMC approach is designed for flexibility and depth, providing technical lot monitoring from planning through to operational handover.
+                        </p>
+                        <div class="bg-blue-600 p-8 rounded-3xl text-white">
+                            <h4 class="font-black uppercase text-sm mb-4 tracking-widest">Why AVG</h4>
+                            <p class="text-sm font-medium">Execution-driven PMC ensuring transparency, discipline, and measurable delivery control through every project phase.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 reveal stagger-1">
+                        <div class="p-8 border-l-4 border-blue-600 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Typical Engagement</h4>
+                            <p class="text-slate-600 text-sm">Flexible monthly retainer or comprehensive project-based models.</p>
+                        </div>
+                        <div class="p-8 border-l-4 border-slate-900 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Deployment Strategy</h4>
+                            <p class="text-slate-600 text-sm">Integrated on-site supervision and off-site strategic coordination.</p>
+                        </div>
+                        <div class="p-8 border-l-4 border-slate-900 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Full Lifecycle Coverage</h4>
+                            <p class="text-slate-600 text-sm">Governance spanning from early planning to final grid commissioning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="bg-white border-t border-slate-100 py-20 text-center">
+        <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto mb-8 mx-auto">
+        <div class="flex justify-center gap-8 text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-8">
+            <a href="services.html" class="hover:text-blue-600 transition">Back to Services</a>
+            <a href="contact.html" class="hover:text-blue-600 transition">Talk to us</a>
+        </div>
+        <p class="text-slate-400 text-[10px] uppercase font-black tracking-[0.3em]">&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const bar = document.getElementById("progress-bar");
+            if(bar) bar.style.width = scrolled + "%";
+
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) {
+                nav.style.padding = '0.75rem 3rem';
+            } else {
+                nav.style.padding = '1rem 3rem';
+            }
+        });
+
+        window.onload = initReveal;
+    </script>
+</body>
+</html>

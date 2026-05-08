@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic & Detailed Engineering | APE VISION GROUP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #0a0f1d;
+            --brand-blue: #2563eb;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--brand-blue); }
+
+        .hero-section {
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 100px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.7) 60%, transparent 100%);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+            height: 100%;
+        }
+
+        .content-card:hover {
+            border-color: var(--brand-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.12);
+        }
+
+        .badge-outline {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 8px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .brand-logo { height: 52px; width: auto; object-fit: contain; }
+        
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--brand-blue);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .btn-action {
+            padding: 1.25rem 2.5rem;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.4s var(--ease-out-expo);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-12 py-4" id="navbar">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
+            </a>
+            <nav class="hidden xl:flex items-center space-x-10">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Our Services</a>
+                <a href="industries.html" class="nav-link">Industries</a>
+                <a href="brain-behind-avg.html" class="nav-link">Leadership</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <button id="menu-toggle" class="xl:hidden text-slate-900 text-xl"><i class="fas fa-bars-staggered"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section overflow-hidden bg-slate-950">
+            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ec4?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80" alt="Engineering Hero">
+            <div class="absolute inset-0 hero-overlay"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="max-w-4xl reveal">
+                    <span class="section-label !text-blue-400">Service 05</span>
+                    
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.05] mb-8">
+                        Basic & Detailed <br/>
+                        <span class="text-blue-600 italic font-light">Engineering Services.</span>
+                    </h1>
+                    
+                    <p class="text-lg lg:text-xl text-white font-bold mb-6">
+                        Engineering Deliverables Built for Execution.
+                    </p>
+
+                    <p class="text-lg lg:text-xl text-slate-300 font-light leading-relaxed max-w-2xl mb-10">
+                        We provide engineering services from concept to detailed drawings, enabling accurate costing, procurement planning, and smooth construction execution.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-16">
+                        <span class="badge-outline">Project Developers</span>
+                        <span class="badge-outline">EPC Contractors</span>
+                        <span class="badge-outline">Industrial Owners</span>
+                        <span class="badge-outline">OEMs</span>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-5">
+                        <a href="contact.html" class="btn-action bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 shadow-xl shadow-blue-600/20 text-center">
+                            Request a Proposal <i class="fas fa-file-signature ml-3"></i>
+                        </a>
+                        <a href="contact.html" class="btn-action border border-white/20 text-white hover:bg-white/10 backdrop-blur-md transition-all text-center">
+                            Schedule a Call <i class="fas fa-calendar-alt ml-3"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do Section -->
+        <section class="py-24 lg:py-40 bg-white">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                    <div class="lg:col-span-4 reveal">
+                        <span class="section-label">Engineering Coverage</span>
+                        <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-8 leading-tight">What <br/>We Do.</h2>
+                        <p class="text-slate-500 mb-10 font-medium">AVG delivers single-point coordination for multi-discipline engineering lots to bridge the gap between design and site.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Basic Engineering & Design Basis</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Detailed Multi-Lot Drawings</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Civil, Structural & Mech Support</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Electrical & C&I Integration</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> SLDs, Layouts & Equipment Schedules</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Procurement Support Documentation</li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-8">
+                        <span class="section-label lg:text-right">Technical Capability Matrix</span>
+                        <div class="grid md:grid-cols-2 gap-6 reveal stagger-1">
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Core Engineering</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Design Architecture.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Comprehensive Design Basis Reports (DBR), GA drawings, and detailed layouts that form the master technical blueprint of the asset.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Material Logic</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Technical Specs.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Preparation of high-fidelity BOQ / BOM and exhaustive technical specifications for critical equipment and plant material packages.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Bid Lifecycle</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Tender Readiness.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Developing tender-ready engineering documentation to ensure technical clarity for vendors and risk-mitigated procurement for owners.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Site Release</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">IFC Coordination.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Management and verification of Issued for Construction (IFC) drawing support to ensure zero-error field execution and assembly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Engagement Model Section -->
+        <section class="py-24 lg:py-40 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+                    <div class="reveal">
+                        <span class="section-label">Structuring Logic</span>
+                        <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-10">Engagement <br/>Model.</h2>
+                        <p class="text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-10">
+                            Our engineering outputs are strictly aligned with procurement and construction practicality, moving beyond theoretical design to deliver executable data.
+                        </p>
+                        <div class="p-8 bg-blue-600 rounded-3xl text-white shadow-xl shadow-blue-600/20">
+                            <h4 class="font-black uppercase text-sm mb-4 tracking-widest">Required Inputs</h4>
+                            <p class="text-sm font-medium">Site data, project objectives, industry standards (IEEE/ASME), and preliminary equipment details or OEM preferences.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 reveal stagger-1">
+                        <div class="p-8 border-l-4 border-blue-600 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Standard Timeline</h4>
+                            <p class="text-slate-600 text-sm">Typical delivery span of 2–10 weeks depending on technical scope and multi-lot complexity.</p>
+                        </div>
+                        <div class="p-8 border-l-4 border-slate-900 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Deliverable Format</h4>
+                            <p class="text-slate-600 text-sm">High-precision AutoCAD / PDF drawings + detailed Excel BOQs + comprehensive Technical Specs.</p>
+                        </div>
+                        <div class="p-8 border-l-4 border-slate-900 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Why AVG</h4>
+                            <p class="text-slate-600 text-sm">Engineering outputs aligned with real-world procurement and construction practicality.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quality Section -->
+        <section class="py-24 lg:py-40 bg-slate-900 text-white text-center">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-4xl mx-auto reveal">
+                    <span class="section-label !text-blue-500">Standards & Compliance</span>
+                    <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-10 leading-none">Quality <br/>Control.</h2>
+                    <p class="text-slate-400 text-lg font-light leading-relaxed mb-12">
+                        We ensure all engineering deliverables meet statutory design codes and global industrial standards, providing a zero-error foundation for on-site fabrication and installation across energy and infrastructure sectors.
+                    </p>
+                    <a href="contact.html" class="btn-action bg-blue-600 text-white hover:bg-blue-700 transition-all">Start Design Phase</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-20 text-center">
+        <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto mb-8 mx-auto">
+        <div class="flex justify-center gap-8 text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-8">
+            <a href="services.html" class="hover:text-blue-600 transition">Back to Services</a>
+            <a href="contact.html" class="hover:text-blue-600 transition">Consult Engineering</a>
+        </div>
+        <p class="text-slate-400 text-[10px] uppercase font-black tracking-[0.3em]">&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const bar = document.getElementById("progress-bar");
+            if(bar) bar.style.width = (winScroll / height) * 100 + "%";
+        });
+
+        window.onload = initReveal;
+    </script>
+</body>
+</html>

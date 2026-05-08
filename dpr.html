@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Project Report (DPR) | APE VISION GROUP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-navy: #0a0f1d;
+            --brand-blue: #2563eb;
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: var(--brand-navy);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.5s var(--ease-out-expo);
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #475569;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--brand-blue); }
+
+        .hero-section {
+            min-height: 95vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 120px;
+            padding-bottom: 100px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(90deg, rgba(10, 15, 29, 0.95) 0%, rgba(10, 15, 29, 0.7) 60%, transparent 100%);
+        }
+
+        .content-card {
+            background: #ffffff;
+            border: 1px solid #f1f5f9;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.5s var(--ease-out-expo);
+            height: 100%;
+        }
+
+        .content-card:hover {
+            border-color: var(--brand-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.12);
+        }
+
+        .badge-outline {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 8px 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 100px;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .brand-logo { height: 52px; width: auto; object-fit: contain; }
+        
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--brand-blue); z-index: 2000; width: 0%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            color: var(--brand-blue);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .btn-action {
+            padding: 1.25rem 2.5rem;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.4s var(--ease-out-expo);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <header class="glass-nav fixed top-0 w-full z-[1000] px-6 lg:px-12 py-4" id="navbar">
+        <div class="max-w-[1920px] mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="APE VISION GROUP" class="brand-logo">
+            </a>
+            <nav class="hidden xl:flex items-center space-x-10">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about-us.html" class="nav-link">About Us</a>
+                <a href="services.html" class="nav-link">Our Services</a>
+                <a href="industries.html" class="nav-link">Industries</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section overflow-hidden bg-slate-950">
+            <img src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?auto=format&fit=crop&q=80&w=1920" class="absolute inset-0 w-full h-full object-cover grayscale opacity-80" alt="DPR Hero">
+            <div class="absolute inset-0 hero-overlay"></div>
+            
+            <div class="container mx-auto px-6 lg:px-12 relative z-10">
+                <div class="max-w-4xl reveal">
+                    <span class="section-label !text-blue-400">Service 02</span>
+                    
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[1.05] mb-8">
+                        Detailed Project <br/>
+                        <span class="text-blue-600 italic font-light">Report (DPR)</span><br/>
+                        & Execution Logic.
+                    </h1>
+                    
+                    <p class="text-lg lg:text-xl text-white font-bold mb-6">
+                        Documentation Built for Approvals, Funding & Execution Readiness.
+                    </p>
+
+                    <p class="text-lg lg:text-xl text-slate-300 font-light leading-relaxed max-w-2xl mb-10">
+                        We prepare DPRs that support project sanctioning, investor evaluation, regulatory approvals, and tendering.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-3 mb-16">
+                        <span class="badge-outline">Developers</span>
+                        <span class="badge-outline">Lenders</span>
+                        <span class="badge-outline">Government Bodies</span>
+                    </div>
+
+                    <a href="contact.html" class="btn-action bg-blue-600 text-white hover:bg-blue-700 hover:scale-105 shadow-xl shadow-blue-600/20 text-center">
+                        Request DPR <i class="fas fa-file-contract ml-3"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 lg:py-40 bg-white">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+                    <div class="lg:col-span-4 reveal">
+                        <span class="section-label">DPR Coverage</span>
+                        <h2 class="text-4xl lg:text-5xl font-black uppercase tracking-tighter mb-8 leading-tight">Technical <br/>Scope.</h2>
+                        <p class="text-slate-500 mb-10 font-medium">AVG provides single-point responsibility for the technical architecture of your project report.</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Project Objectives</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Site Infrastructure Planning</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Preliminary Engineering</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> CAPEX / OPEX Budgeting</li>
+                            <li class="flex items-center gap-3 text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-3"><i class="fas fa-circle text-[6px] text-blue-600"></i> Risk Mitigation Strategy</li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-8">
+                        <span class="section-label lg:text-right">Technical Capability Matrix</span>
+                        <div class="grid md:grid-cols-2 gap-6 reveal stagger-1">
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Design Basis</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Engineering Foundation.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Technical assumptions, system configurations, and design basis reports that form the backbone of the project's technical configuration.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Financial Precision</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Asset Budgeting.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Deep-dive CAPEX/OPEX estimation structured for lender due diligence, investor evaluation, and overall project sanctioning.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Execution Layouts</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Space & Interface.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">Preparation of site layouts, preliminary engineering inputs, and an exhaustive BOQ/scope matrix to ensure tendering readiness.</p>
+                            </div>
+                            <div class="content-card">
+                                <h4 class="font-black text-blue-600 text-sm uppercase mb-3 tracking-widest">Master Schedule</h4>
+                                <h3 class="text-xl font-black uppercase mb-4">Milestone Logic.</h3>
+                                <p class="text-sm text-slate-600 font-medium leading-relaxed">A comprehensive implementation plan detailing critical milestones and execution methodology aligned with global industry benchmarks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 lg:py-40 bg-slate-50">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+                    <div class="reveal">
+                        <span class="section-label">Structuring Logic</span>
+                        <h2 class="text-4xl lg:text-7xl font-black uppercase tracking-tighter leading-none mb-10">Engagement <br/>Model.</h2>
+                        <p class="text-lg lg:text-xl text-slate-500 font-light leading-relaxed mb-10">
+                            Our DPRs are structured with engineering and execution logic, moving beyond theoretical reporting to provide bankable field intelligence.
+                        </p>
+                        <div class="bg-blue-600 p-8 rounded-3xl text-white">
+                            <h4 class="font-black uppercase text-sm mb-4 tracking-widest">Why AVG</h4>
+                            <p class="text-sm font-medium">Reports built with a deep understanding of multi-discipline technical lots, ensuring your DPR is ready for project finance audits and EPC tendering.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 reveal stagger-1">
+                        <div class="p-8 border-l-4 border-blue-600 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Standard Timeline</h4>
+                            <p class="text-slate-600 text-sm">Typical delivery cycle spanning 2–6 weeks based on project size and technical complexity.</p>
+                        </div>
+                        <div class="p-8 border-l-4 border-slate-900 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Format & Access</h4>
+                            <p class="text-slate-600 text-sm">Complete DPR document in PDF format + editable technical Excel BOQs for cost sensitivity modelling.</p>
+                        </div>
+                        <div class="p-8 border-l-4 border-slate-900 bg-white rounded-r-2xl shadow-sm">
+                            <h4 class="font-black uppercase text-sm mb-2">Required Inputs</h4>
+                            <p class="text-slate-600 text-sm">Site data, project objective, technical preferences, and preliminary production/load targets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 lg:py-40 bg-slate-900 text-white text-center">
+            <div class="container mx-auto px-6 lg:px-12">
+                <div class="max-w-4xl mx-auto reveal">
+                    <span class="section-label !text-blue-500">Document Integrity</span>
+                    <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-10 leading-none">Quality <br/>Control.</h2>
+                    <p class="text-slate-400 text-lg font-light leading-relaxed mb-12">
+                        Every DPR undergoes a rigorous peer review by our multi-discipline engineering leads to ensure that all assumptions are technically valid and executable under real site conditions.
+                    </p>
+                    <a href="contact.html" class="btn-action bg-blue-600 text-white hover:bg-blue-700 transition-all">Start Report Prep</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-20 text-center">
+        <img src="https://apevisiongroup.com/images/home-page/ape-vision-logo-01.png" alt="Logo" class="h-12 w-auto mb-8 mx-auto">
+        <p class="text-slate-400 text-[10px] uppercase font-black tracking-[0.3em]">&copy; 2026 APE VISION GROUP. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const bar = document.getElementById("progress-bar");
+            if(bar) bar.style.width = (winScroll / height) * 100 + "%";
+        });
+
+        window.onload = initReveal;
+    </script>
+</body>
+</html>
